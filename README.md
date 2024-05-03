@@ -147,7 +147,7 @@ HTML, CSS, JavaScript
   - Botão de cadastrar
   - Botão pra entrar com Google
 
-### Cadastras
+### Cadastrar
 - Janela flutuante
   - Input apelido
   - Input email
@@ -198,8 +198,13 @@ O sistema de autenticação de usuário, armazenamento de informações do jogo 
 # Agradecimentos
 
 Meus agradecimentos a todos que testaram e ajudaram a melhorar a experiência desse jogo:
-- Fayla Diamantino
-- Jonatas Cavalcante
-- Gustavo Mota
-- Lucas Araújo
+- Fayla Diamantino (Aspectos visuais, cores, combinações)
+- Jonatas Cavalcante (Detecção de bugs, proposta de novas funcionalidade)
+- Gustavo Mota (Organização do projeto, componentização e base de estudos)
+- Lucas Araújo (Experiência do usuário, detecção de bugs)
+
+Sem esquecer dos instrutores da [Digital Innovation One (DIO)](https://web.dio.me/) provedores de muito conhecimento técnico para esse desenvolvimento:
+- [Elidiana](https://www.linkedin.com/in/elidianaandrade/)
+- [Rafa](https://www.linkedin.com/in/rafaskoberg/)
+- [Felipão](https://www.linkedin.com/in/felipeaguiar-exe/)
 <!-- ✔️ -->
