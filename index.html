@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./src/styles/global.css">
   <title>Document</title>
 </head>
 <body>
   <header>
-    <div class="list_menu">
+    <div class="top_menu">
       <div class="list_menu_toggle">
         <span>MENU</span>
-        <img src="" alt="">
-        <div class="list_menu_dropdown">
+        <img src="./src/assets/icons/list-menu.svg" alt="">
+        <div class="list_menu_dropdown hide">
           <nav>mercado</nav>
           <nav>cartas</nav>
           <nav>pokédex</nav>
@@ -20,12 +20,10 @@
           <nav>classificação</nav>
         </div>
       </div>
-    </div>
-    <div class="profile_menu">
       <div class="profile_menu_toggle">
-        <span id="name"></span>
-        <img src="" alt="">
-        <div class="profile_menu_dropdown">
+        <span id="name">Ash</span>
+        <img src="./src/assets/icons/profile-menu.svg" alt="">
+        <div class="profile_menu_dropdown hide">
           <nav>entrar</nav>
           <nav>cadastrar</nav>
           <nav>perfil</nav>
@@ -37,5 +35,15 @@
       </div>
     </div>
   </header>
+
+  <main></main>
+  
+  <footer>
+    <img id="portfolio" src="./src/assets/icons/folder.svg" alt="portfólio">
+    <img id="github" src="./src/assets/icons/github.svg" alt="github">
+    <img id="linkedin" src="./src/assets/icons/linkedin.svg" alt="linkedin">
+    <img id="itchio" src="./src/assets/icons/itchio.svg" alt="itchio">
+  </footer>
+  <script type="module" src="./src/scripts/main.js" defer></script>
 </body>
 </html>
