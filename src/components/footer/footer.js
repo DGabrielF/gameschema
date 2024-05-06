@@ -1,4 +1,11 @@
-export function externalLinks(nameLink) {
+export function attachEventsOnFooterIcons() {
+  const footerLinks = document.querySelectorAll("footer img");
+  for (const link of footerLinks) {
+    link.addEventListener("click", () => externalLinks(link.id));
+  }
+}
+
+function externalLinks(nameLink) {
   switch (nameLink) {
     case "portfolio":
       window.open("https://dgabrielf.github.io/danilo-ferreira/", "_blank")
