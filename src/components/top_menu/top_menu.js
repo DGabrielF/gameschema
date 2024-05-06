@@ -12,6 +12,13 @@ export function attachEventsOnProfileMenu() {
   listProfileToggleImg.addEventListener("click", () => toggleMenu("profile_menu_dropdown"));
 }
 
+export function attachEventsOnSectionMenuButtons() {
+  const topMenuSectionButtons = document.querySelectorAll(".top_menu>[class$='_toggle']>[class*='_menu_dropdown']>*");
+  for (const button of topMenuSectionButtons) {
+    button.addEventListener("click", () => switchPage(button.id))
+  }
+}
+
 function toggleMenu(className) {
   const dropdown = document.querySelector(`.${className}`);
   if (dropdown.classList.contains("hide")) {
@@ -19,4 +26,17 @@ function toggleMenu(className) {
   } else {
     dropdown.classList.add("hide")
   }
+}
+
+function switchPage(page) {
+  const sectionList = document.querySelectorAll("section");
+  for (const section of sectionList) {
+    if (page === section.id) {
+      if (section.classList.contains("hide")) {
+        section.classList.remove("hide");
+      };
+    } else {
+      section.classList.add("hide");
+    };
+  };
 }

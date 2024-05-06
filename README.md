@@ -198,10 +198,10 @@ O sistema de autenticação de usuário, armazenamento de informações do jogo 
 # Agradecimentos
 
 Meus agradecimentos a todos que testaram e ajudaram a melhorar a experiência desse jogo:
-- Fayla Diamantino (Aspectos visuais, cores, combinações)
-- Jonatas Cavalcante (Detecção de bugs, proposta de novas funcionalidade)
-- Gustavo Mota (Organização do projeto, componentização e base de estudos)
-- Lucas Araújo (Experiência do usuário, detecção de bugs)
+- [Fayla Diamantino](https://www.linkedin.com/in/fayladiamantino/)
+- [Jonatas Cavalcante](https://www.linkedin.com/in/jonatasosc/)
+- [Gustavo Mota](https://www.linkedin.com/in/gustavomotadev/)
+- [Lucas Araújo](https://www.linkedin.com/in/lucas-moraes-2074b7147/)
 
 Sem esquecer dos instrutores da [Digital Innovation One (DIO)](https://web.dio.me/) provedores de muito conhecimento técnico para esse desenvolvimento:
 - [Elidiana](https://www.linkedin.com/in/elidianaandrade/)
