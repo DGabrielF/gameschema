@@ -1,9 +1,9 @@
-#signin {
+.signin {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#signin.hide {
+.signin.hide {
   display: none;
 }

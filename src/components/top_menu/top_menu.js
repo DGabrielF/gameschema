@@ -17,24 +17,24 @@ export function attachEventsOnSectionMenuButtons() {
   for (const button of topMenuSectionButtons) {
     button.addEventListener("click", () => {
       switchPage(button.id);
-      deactivateMenuButton(button.id);
-    });
-  };
-};
+      deactivateMenuButton(button.id)
+    })
+  }
+}
 
 function toggleMenu(className) {
   const dropdown = document.querySelector(`.${className}`);
   if (dropdown.classList.contains("hide")) {
-    dropdown.classList.remove("hide");
+    dropdown.classList.remove("hide")
   } else {
-    dropdown.classList.add("hide");
-  };
-};
+    dropdown.classList.add("hide")
+  }
+}
 
 function switchPage(page) {
   const sectionList = document.querySelectorAll("section");
   for (const section of sectionList) {
-    if (page === section.id) {
+    if (section.classList.contains(page)) {
       if (section.classList.contains("hide")) {
         section.classList.remove("hide");
       };
@@ -42,7 +42,7 @@ function switchPage(page) {
       section.classList.add("hide");
     };
   };
-};
+}
 
 function deactivateMenuButton(clickedButton) {
   const topMenuSectionButtons = document.querySelectorAll(".top_menu>[class$='_toggle']>[class*='_menu_dropdown']>*");
@@ -51,6 +51,6 @@ function deactivateMenuButton(clickedButton) {
       button.disabled = true;
     } else {
       button.disabled = false;
-    };
-  };
-};
+    }
+  }
+}

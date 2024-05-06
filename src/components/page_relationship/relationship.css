@@ -1,8 +1,8 @@
-#relationship {
+.relationship {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#relationship.hide {
+.relationship.hide {
   display: none;
 }

@@ -1,0 +1,60 @@
+button {
+  padding: 3px 5px 2px 5px;
+  width: 100%;
+  max-width: 250px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  border: 2px solid #dedede;
+  border-radius: 5px;
+  background-color: #fefefe;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  cursor: pointer;
+}
+button:hover {
+  border: 2px solid #ababab;
+  outline: 1px solid #dedede;
+  box-shadow: 1px solid #dedede;
+}
+button:active {
+  position: relative;
+  top: 2px;
+}
+
+button:disabled {
+  cursor: default;
+}
+button:disabled:hover {
+  border: 2px solid #dedede;
+  outline: none;
+  border-radius: 5px;
+  background-color: #fefefe;
+}
+button:disabled:active{
+  position: relative;
+  top: 0;
+}
+
+.button_area {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.button_area>* {
+  width: 100%;
+}
+
+@media only screen and (max-width: 399px) {
+  .button_area {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

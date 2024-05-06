@@ -1,9 +1,9 @@
-#ranking {
+.ranking {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
-#ranking.hide {
+.ranking.hide {
   display: none;
 }
 

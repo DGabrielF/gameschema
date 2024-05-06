@@ -1,8 +1,8 @@
-#pokedex {
+.pokedex {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#pokedex.hide {
+.pokedex.hide {
   display: none;
 }
