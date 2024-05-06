@@ -14,10 +14,3 @@ footer {
   position: fixed;
   bottom: 0;
 }
-
-footer img {
-  width: 23px;
-  height: 23px;
-
-  cursor: pointer;
-}

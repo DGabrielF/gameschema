@@ -1,0 +1,9 @@
+#signout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#signout.hide {
+  display: none;
+}

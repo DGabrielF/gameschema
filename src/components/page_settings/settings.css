@@ -1,0 +1,8 @@
+#settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#settings.hide {
+  display: none;
+}

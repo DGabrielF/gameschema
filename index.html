@@ -11,18 +11,18 @@
     <div class="top_menu">
       <div class="list_menu_toggle">
         <span>MENU</span>
-        <img src="./src/assets/icons/list-menu.svg" alt="">
+        <img class="icon" src="./src/assets/icons/menu/list-menu.svg" alt="">
         <div class="list_menu_dropdown hide">
-          <nav>mercado</nav>
-          <nav>cartas</nav>
-          <nav>pokédex</nav>
-          <nav>duelar</nav>
-          <nav>classificação</nav>
+          <a href="#market">mercado</a>
+          <a>cartas</a>
+          <a>pokédex</a>
+          <a>duelar</a>
+          <a>classificação</a>
         </div>
       </div>
       <div class="profile_menu_toggle">
         <span id="name">Ash</span>
-        <img src="./src/assets/icons/profile-menu.svg" alt="">
+        <img class="icon" src="./src/assets/icons/menu/profile-menu.svg" alt="">
         <div class="profile_menu_dropdown hide">
           <nav>entrar</nav>
           <nav>cadastrar</nav>
@@ -36,13 +36,328 @@
     </div>
   </header>
 
-  <main></main>
-  
+  <main>
+    <section id="home" class="hide"></section>
+
+    <section id="market" class="hide">
+      <div class="side_menu">
+        <div class="side_menu_content">
+          <h1>MERCADO</h1>
+          <div class="side_menu_options">
+            <button id="package">pacotes</button>
+            <button id="buy">comprar</button>
+            <button id="sell">vender</button>
+            <button id="trade">trocar</button>
+          </div>
+        </div>
+        <button class="toggle_side_menu">
+          <img class="icon" src="./src/assets/icons/general/caret.svg" alt="">
+        </button>
+      </div>
+      <div class="market_content">
+        <div class="money_area">
+          <p>Você tem P$</p>
+          <span id="money">10000</span>
+        </div>
+        <div class="search_area">
+          <span>BUSCAR</span>
+          <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
+          <input type="search" name="" id="">
+        </div>
+        <div class="offer_filter">
+          <span>Ordenar por</span>
+          <div class="filter_types">
+            <span class="selected_filter">selecionado</span>
+            <div class="filter_options"></div>
+          </div>
+          <div class="order_types">
+            <span class="selected_order"></span>
+            <img src="" alt="" class="selected_image">
+          </div>
+        </div>
+        <div class="offer_list"></div>
+      </div>
+    </section>
+
+    <section id="cards"  class="hide">
+      <span>Suas Cartas</span>
+      <div class="search_area">
+        <span>BUSCAR</span>
+        <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
+        <input type="search" name="" id="">
+      </div>
+      <div class="cards_area"></div>
+      <div class="page_menu">
+        <img class="icon" src="./src/assets/icons/general/caret.svg" alt="">
+        <div class="page_menu_buttons">
+          
+        </div>
+        <img class="icon vertical_mirrored" src="./src/assets/icons/general/caret.svg" alt="">
+      </div>
+      <div class="selected_cards_area">
+        <span>Cartas Selecionadas</span>
+        <div class="attribute_area"></div>
+      </div>
+    </section>
+
+    <section id="pokedex" class="hide">
+      <div class="search_area">
+        <span>BUSCAR</span>
+        <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
+        <input type="search" name="" id="">
+      </div>
+      <div class="cards_area"></div>
+      <div class="page_menu">
+        <img class="icon" src="./src/assets/icons/general/caret.svg" alt="">
+        <div class="page_menu_buttons">
+          
+        </div>
+        <img class="icon vertical_mirrored" src="./src/assets/icons/general/caret.svg" alt="">
+      </div>
+    </section>
+
+    <section id="search_duel" class="hide">
+      <div class="side_menu">
+        <div class="side_menu_content">
+          <h1>DUELAR</h1>
+          <div class="side_menu_options">
+            <button id="npc_enemy">NPCs</button>
+            <button id="player_ranking">Classificação</button>
+            <button id="enter_room">Achar sala</button>
+            <button id="open_room">Criar sala</button>
+          </div>
+        </div>
+        <button class="toggle_side_menu">
+          <img class="icon" src="./src/assets/icons/general/caret.svg" alt="">
+        </button>
+      </div>
+      <div class="search_battle_content">
+        <div class="search_area">
+          <span>BUSCAR</span>
+          <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
+          <input type="search" name="" id="">
+        </div>
+        <div class="duellers_list">
+          <h2></h2>
+          <ul>
+            <li id="chavedoadversario">
+              <span class="dueller_name">nome</span>
+              <span class="dueller_performance">23%</span>
+              <div class="password">
+                <span>senha: </span>
+                <input type="password">
+              </div>
+              <button>
+                <img src="./src/assets/icons/general/enter.svg" alt="" class="icon">
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="rooms_list">
+          <h2></h2>
+          <ul>
+            <li id="chavedasla">
+              <span class="dueller_name">nome</span>
+              <span class="dueller_performance">23%</span>
+              <button>
+                <img src="./src/assets/icons/card/attack.svg" alt="" class="icon">
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="create_room">
+          privada
+          <input type="checkbox">
+          <div class="password">
+            <span>definir senha</span>
+            <input type="password">
+          </div>
+          <div class="button_area">
+            <button class="confirm">confirmar</button>
+            <button class="cancel">cancelar</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="duel">
+        <div class="opponent_cards"></div>
+        <div class="duel_area">
+          <div class="opponent_card_slot"></div>
+          <div class="duel_info">
+            <div class="round_timer"></div>
+            <div class="scoreboard">
+              <span class="player_name"></span>
+              <span class="player_score"></span>
+              <span>X</span>
+              <span class="opponent_score"></span>
+              <span class="opponent_name"></span>
+            </div>
+            <div class="selected_attibute"></div>
+            <button id="start_turn">Vai</button>
+          </div>
+          <div class="player_card_slot"></div>
+        </div>
+        <div class="select_attribute">
+          <img src="./src/assets/icons/card/height.svg" alt="" class="icon">
+          <img src="./src/assets/icons/card/weight.svg" alt="" class="icon">
+          <img src="./src/assets/icons/card/hp.svg" alt="" class="icon">
+          <img src="./src/assets/icons/card/speed.svg" alt="" class="icon">
+          <img src="./src/assets/icons/card/attack.svg" alt="" class="icon">
+          <img src="./src/assets/icons/card/defense.svg" alt="" class="icon">
+        </div>
+        <div class="player_cards"></div>
+      </div>
+    </section>
+
+    <section id="ranking" class="hide">
+      <div class="side_menu">
+        <div class="side_menu_content">
+          <h1>CLASSIFICAÇÃO</h1>
+          <div class="side_menu_options">
+            <button id="cards_ranking">Cartas</button>
+            <button id="duel_ranking">Duelos</button>
+          </div>
+        </div>
+        <button class="toggle_side_menu">
+          <img class="icon" src="./src/assets/icons/general/caret.svg" alt="">
+        </button>
+      </div>
+      <div class="ranking_content">
+        <div class="player_position"></div>
+        <div class="order_types">
+          <span class="selected_order"></span>
+          <img src="" alt="" class="selected_image">
+        </div>
+        <div class="ranking_list"></div>
+        <div class="page_menu">
+          <img class="icon" src="./src/assets/icons/general/caret.svg" alt="">
+          <div class="page_menu_buttons">
+            
+          </div>
+          <img class="icon vertical_mirrored" src="./src/assets/icons/general/caret.svg" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section id="profile" class="hide">
+      <div class="profile_image">
+        <img src="" alt="">
+        <img class="icon" src="./src/assets/icons/general/edit.svg" alt="">
+      </div>
+      <span class="name">Ash Katchum</span>
+      <span>Introdução</span>
+      <input type="text">
+      <span>Aniversário</span>
+      <div class="date">
+        <input type="text" class="birthdate_day">
+        <input type="text" class="birthdate_mounth">
+        <input type="text" class="birthdate_year">
+      </div>
+      <span>Gênero</span>
+      <div class="selected_option">
+        <span></span>
+        <div class="options"></div>
+      </div>
+    </section>
+
+    <section id="account" class="hide">
+      <div class="password">
+        <span>Senha</span>
+        <button>editar</button>
+        <div class="edit_area">
+          <div class="input_area">
+            <input type="password" placeholder="nova senha">
+            <input type="password" placeholder="confirme a nova senha">
+            <input type="password" placeholder="senha atual">
+          </div>
+          <button class="confirm">confirmar</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="relationship" class="hide">
+      <div class="search_area">
+        <span>BUSCAR</span>
+        <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
+        <input type="search" name="" id="">
+      </div>
+      <div class="friends">
+        <span>Amigos</span>
+        <div class="friends_list"></div>
+      </div>
+      <div class="received_requests">
+        <span>Solicitações recebidas</span>
+        <div class="received_requests_list"></div>
+      </div>
+      <div class="sent_requests">
+        <span>Solicitações enviadas</span>
+        <div class="received_requests_list"></div>
+      </div>
+      <div class="blocked">
+        <span>Bloquedos</span>
+        <div class="blocked_list"></div>
+      </div>
+    </section>
+
+    <section id="settings" class="hide">
+      <h2>Tamanho das cartas</h2>
+      <div class="input_area"></div>
+      
+      <h2>Sons</h2>
+      <div class="input_area"></div>
+    </section>
+
+    <section id="signin">
+      <div class="box">
+        <h1>ENTRAR</h1>
+        <input type="text" placeholder="email">
+        <input type="password" placeholder="senha">
+        <div class="button_area">
+          <button class="confirm">entrar</button>
+          <button>cadastrar</button>
+        </div>
+        <button class="google_signin">
+          <span>Entrar com</span>
+          <img src="./src/assets/icons/general/google.svg" alt="" class="icon">
+        </button>
+      </div>
+    </section>
+
+    <section id="signup" class="hide">
+      <div class="box">
+        <h1>CADASTRAR</h1>
+        <input type="text" placeholder="apelido">
+        <input type="text" placeholder="email">
+        <input type="password" placeholder="senha">
+        <input type="password" placeholder="confirmar senha">
+        <div class="button_area">
+          <button class="confirm">entrar</button>
+          <button>cadastrar</button>
+        </div>
+        <button class="google_signup">
+          <span>Cadastrar com</span>
+          <img src="./src/assets/icons/general/google.svg" alt="" class="icon">
+        </button>
+      </div>
+    </section>
+
+    <section id="signout" class="hide">
+      <div class="box">
+        <h1>SAIR</h1>
+        <p>Deseja realmente sair do jogo?</p>
+        <div class="button_area">
+          <button class="cancel">SIM</button>
+          <button class="confirm">CANCELAR</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
-    <img id="portfolio" src="./src/assets/icons/folder.svg" alt="portfólio">
-    <img id="github" src="./src/assets/icons/github.svg" alt="github">
-    <img id="linkedin" src="./src/assets/icons/linkedin.svg" alt="linkedin">
-    <img id="itchio" src="./src/assets/icons/itchio.svg" alt="itchio">
+    <img id="portfolio" class="icon" src="./src/assets/icons/contacts/folder.svg" alt="portfólio">
+    <img id="github" class="icon" src="./src/assets/icons/contacts/github.svg" alt="github">
+    <img id="linkedin" class="icon" src="./src/assets/icons/contacts/linkedin.svg" alt="linkedin">
+    <img id="itchio" class="icon" src="./src/assets/icons/contacts/itchio.svg" alt="itchio">
   </footer>
   <script type="module" src="./src/scripts/main.js" defer></script>
 </body>

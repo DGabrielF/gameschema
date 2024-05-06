@@ -1,6 +1,20 @@
 @import url("../components/top_menu/top_menu.css");
 @import url("../components/footer/footer.css");
 
+@import url("../components/page_market/market.css");
+@import url("../components/page_cards/cards.css");
+@import url("../components/page_pokedex/pokedex.css");
+@import url("../components/page_duel/search_duel.css");
+@import url("../components/page_ranking/ranking.css");
+
+@import url("../components/page_profile/profile.css");
+@import url("../components/page_relationship/relationship.css");
+@import url("../components/page_settings/settings.css");
+
+@import url("../components/page_signin/signin.css");
+@import url("../components/page_signup/signup.css");
+@import url("../components/page_signout/signout.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +23,68 @@
   font-weight: 900;
 }
 
+main {
+  height: calc(100vh - 44px - 35px);
+}
+
+section {
+  padding-top: 44px;
+  height: calc(100vh - 44px - 35px);
+}
+
 .hide {
   display: none;
+}
+
+.icon {
+  width: 23px;
+  height: 23px;
+
+  cursor: pointer;
+}
+
+.search_area {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.page_menu {
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.button_area {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.button_area>* {
+  width: 100%;
+}
+
+.box {
+  padding: 10px;
+  width: 80%;
+
+  border: 2px solid #dedede;
+  border-radius: 10px;
+  background-color: #e8e8e8;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }

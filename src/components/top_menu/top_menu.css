@@ -1,5 +1,6 @@
 header {
   padding: 5px 10px;
+  width: calc(100% - 20px);
   height: 32px;
 
   border-bottom: 2px solid #dedede;
@@ -9,7 +10,7 @@ header {
   align-items: center;
   justify-content: space-between;
 
-  position: relative;
+  position: fixed;
   z-index: 2;
 }
 

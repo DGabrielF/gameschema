@@ -1,0 +1,10 @@
+#search_duel {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  position: relative;
+}
+#search_duel.hide {
+  display: none;
+}

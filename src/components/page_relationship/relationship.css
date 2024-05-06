@@ -1,0 +1,8 @@
+#relationship {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#relationship.hide {
+  display: none;
+}
