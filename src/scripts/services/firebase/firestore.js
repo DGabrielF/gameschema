@@ -48,5 +48,23 @@ Firestore.createUserData = async (userId, userName) => {
   } catch (error) {
     return firebaseErrorMessage[error.message];
   }
+}
 
+Firestore.fetchDocById = async (collectionName, docId) => {
+  try {
+    const docRef = doc(db, collectionName, docId);
+    const docSnapshot = await getDoc(docRef);
+
+    if (docSnapshot.exists()) {
+      const data = {
+        uid: docSnapshot.id,
+        ...docSnapshot.data(),
+      };
+      return data;
+    } else {
+      return "Usuário não encontrado.";
+    }
+  } catch (error) {
+    return firebaseErrorMessage[error.message];
+  }
 }

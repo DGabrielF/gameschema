@@ -1,17 +1,18 @@
 import { FireAuth } from "../../../scripts/services/firebase/auth.js";
 import { Page } from "../../../scripts/services/system/page.js";
+import { State } from "../../../scripts/services/system/state.js";
 import { Toast } from "../../shared/toast/toast.js";
 
 export const SignUp = {
   self: document.querySelector(".signup .box"),
-  nickname: null,
+  name: null,
   email: null,
   password: null,
   confirmPassord: null,
 }
 
 SignUp.load = () => {
-  SignUp.nickname = SignUp.self.querySelector(".nickname");
+  SignUp.name = SignUp.self.querySelector(".nickname");
   SignUp.email = SignUp.self.querySelector(".email");
   SignUp.password = SignUp.self.querySelector(".password");
   SignUp.confirmPassord = SignUp.self.querySelector(".confirm_pass");
@@ -24,16 +25,17 @@ SignUp.load = () => {
 }
 
 SignUp.register = async () => {
-  const email = SignUp.userOrEmail.value;
+  const name = SignUp.name.value;
+  const email = SignUp.email.value;
   const password = SignUp.password.value;
 
-  const response = await FireAuth.signUp(email, password);
+  const response = await FireAuth.signUp(email, password, name);
   if (typeof response === "string") {
     Toast.open("Erro", response, Toast.error);
-    user = null;
+    State.userUpdate(null);
   } else {
     Toast.open("Sucesso", "Estamos armazenando suas informações", Toast.success);
-    user = response;
-    Page.change("home")
+    State.userUpdate(response);
+    Page.change("home");
   }
 }

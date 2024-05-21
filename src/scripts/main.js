@@ -4,6 +4,8 @@ import { PasswordInput } from "../components/shared/inputs/password_input.js";
 import { Toast } from "../components/shared/toast/toast.js";
 import { SignIn } from "../components/pages/signin/signin.js";
 import { SignUp } from "../components/pages/signup/signup.js";
+import { SignOut } from "../components/pages/signout/signout.js";
+import { State } from "./services/system/state.js";
 
 export const state = {
   user: {
@@ -13,15 +15,21 @@ export const state = {
 };
 
 
-function init() {
+async function init() {
   TopMenu.load();
-  SignIn.load();
-  SignUp.load();
+  await SignIn.load();
+  await SignUp.load();
+  await SignOut.load();
 
   // Footer
   attachEventsOnFooterIcons();
 
   PasswordInput.attachToggleEventAtIcons()
+
+  const testButton = document.querySelector("#teste");
+  testButton.addEventListener("click", () => {
+    console.log(State.user)
+  })
 
   const inputs = document.querySelectorAll('input');
 

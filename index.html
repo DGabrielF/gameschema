@@ -21,7 +21,7 @@
         </nav>
       </div>
       <div class="profile_menu_toggle">
-        <span id="name">Ash</span>
+        <span id="name"></span>
         <img class="icon" src="./src/assets/icons/menu/profile-menu.svg" alt="">
         <nav class="profile_menu_dropdown hide">
           <button id="signin" class="navigation">entrar</button>
@@ -51,7 +51,9 @@
       </button>
     </div>
 
-    <section class="home hide"></section>
+    <section class="home">
+      <button id="teste">TESTE</button>
+    </section>
 
     <section class="market hide">
       <div class="side_menu">
@@ -342,11 +344,11 @@
         <div class="input_area">
           <div class="wrap_input">
             <span class="placeholder hide">E-mail</span>
-            <input class="user_email" type="text" placeholder="E-mail">
+            <input class="user_email" type="text" placeholder="E-mail" value="dextestador@gmal.com">
           </div>
           <div class="password_input">
             <span class="placeholder hide">Senha</span>
-            <input class="password" type="password" placeholder="Senha">
+            <input class="password" type="password" placeholder="Senha"  value="123456">
             <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
           </div>
         </div>
@@ -370,20 +372,20 @@
         <div class="input_area">
           <div class="name_input">
             <span class="placeholder hide">Apelido</span>
-            <input class="nickname" type="text" placeholder="Apelido">
+            <input class="nickname" type="text" placeholder="Apelido" value="Testador">
           </div>
           <div class="email_input">
             <span class="placeholder hide">E-mail</span>
-            <input class="email" type="text" placeholder="Email">
+            <input class="email" type="text" placeholder="Email" value="dextestador@gmal.com">
           </div>
           <div class="password_input">
             <span class="placeholder hide">Senha</span>
-            <input class="password" type="password" placeholder="Senha">
+            <input class="password" type="password" placeholder="Senha" value="123456">
             <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
           </div>
           <div class="password_input">
             <span class="placeholder hide">Confirmar senha</span>
-            <input class="confirm_pass" type="password" placeholder="Confirmar senha">
+            <input class="confirm_pass" type="password" placeholder="Confirmar senha" value="123456">
             <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
           </div>
         </div>
@@ -395,15 +397,15 @@
       </div>
     </section>
 
-    <section class="signout">
+    <section class="signout hide">
       <div class="box">
         <h1>SAIR</h1>
         <div class="separator_horizontal"></div>
         <p>Deseja realmente sair do jogo?</p>
         <div class="separator_horizontal"></div>
         <div class="button_area">
-          <button class="cancel text">SIM</button>
-          <button class="text">CANCELAR</button>
+          <button class="deny text exit">SIM</button>
+          <button class="text cancel">CANCELAR</button>
         </div>
       </div>
     </section>
