@@ -1,7 +1,7 @@
-@import url("./buttons.css");
+@import url("./components/buttons.css");
+@import url("./components/inputs.css");
 
 @import url("../components/top_menu/top_menu.css");
-
 @import url("../components/page_market/market.css");
 @import url("../components/page_cards/cards.css");
 @import url("../components/page_pokedex/pokedex.css");
@@ -24,6 +24,22 @@
   user-select: none;
   font-family: monospace;
   font-weight: 900;
+}
+body{
+  background: url("../assets/images/page-bg.jpg");
+  position: relative;
+}
+body::after {
+  content: "";
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #000a;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 main {
@@ -69,7 +85,7 @@ section {
 
   border: 2px solid #dedede;
   border-radius: 10px;
-  background-color: #e8e8e8;
+  background-color: #dedededd;
 
   display: flex;
   flex-direction: column;
@@ -79,4 +95,11 @@ section {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
+}
+
+.separator_horizontal{
+  height: 3px;
+  width: 100%;
+
+  background-color: #ababab;
 }

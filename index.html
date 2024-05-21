@@ -13,41 +13,42 @@
         <span>MENU</span>
         <img class="icon" src="./src/assets/icons/menu/list-menu.svg" alt="">
         <nav class="list_menu_dropdown hide">
-          <button id="market">mercado</button>
-          <button id="cards">cartas</button>
-          <button id="pokedex">pokédex</button>
-          <button id="duel">duelar</button>
-          <button id="ranking">classificação</button>
+          <button id="market" class="navigation">mercado</button>
+          <button id="cards" class="navigation">cartas</button>
+          <button id="pokedex" class="navigation">pokédex</button>
+          <button id="duel" class="navigation">duelar</button>
+          <button id="ranking" class="navigation">classificação</button>
         </nav>
       </div>
       <div class="profile_menu_toggle">
         <span id="name">Ash</span>
         <img class="icon" src="./src/assets/icons/menu/profile-menu.svg" alt="">
         <nav class="profile_menu_dropdown hide">
-          <button id="signin">entrar</button>
-          <button id="signup">cadastrar</button>
-          <button id="profile">perfil</button>
-          <button id="account">conta</button>
-          <button id="relationship">relacionamentos</button>
-          <button id="settings">configurações</button>
-          <button id="signout">sair</button>
+          <button id="signin" class="navigation">entrar</button>
+          <button id="signup" class="navigation">cadastrar</button>
+          <button id="profile" class="navigation">perfil</button>
+          <button id="account" class="navigation">conta</button>
+          <button id="relationship" class="navigation">relacionamentos</button>
+          <button id="settings" class="navigation">configurações</button>
+          <button id="signout" class="navigation">sair</button>
         </nav>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="home"></section>
+    <div class="fade hide"></div>
+    <section class="home hide"></section>
 
     <section class="market hide">
       <div class="side_menu">
         <div class="side_menu_content">
           <h1>MERCADO</h1>
           <div class="side_menu_options">
-            <button id="package">pacotes</button>
-            <button id="buy">comprar</button>
-            <button id="sell">vender</button>
-            <button id="trade">trocar</button>
+            <button id="package" class="navigation">pacotes</button>
+            <button id="buy" class="navigation">comprar</button>
+            <button id="sell" class="navigation">vender</button>
+            <button id="trade" class="navigation">trocar</button>
           </div>
         </div>
         <button class="toggle_side_menu">
@@ -121,10 +122,10 @@
         <div class="side_menu_content">
           <h1>DUELAR</h1>
           <div class="side_menu_options">
-            <button id="npc_enemy">NPCs</button>
-            <button id="player_ranking">Classificação</button>
-            <button id="enter_room">Achar sala</button>
-            <button id="open_room">Criar sala</button>
+            <button id="npc_enemy" class="navigation">NPCs</button>
+            <button id="player_ranking" class="navigation">Classificação</button>
+            <button id="enter_room" class="navigation">Achar sala</button>
+            <button id="open_room" class="navigation">Criar sala</button>
           </div>
         </div>
         <button class="toggle_side_menu">
@@ -147,7 +148,7 @@
                 <span>senha: </span>
                 <input type="password">
               </div>
-              <button>
+              <button class="icon">
                 <img src="./src/assets/icons/general/enter.svg" alt="" class="icon">
               </button>
             </li>
@@ -156,10 +157,10 @@
         <div class="rooms_list">
           <h2></h2>
           <ul>
-            <li id="chavedasla">
+            <li id="chavedasala">
               <span class="dueller_name">nome</span>
               <span class="dueller_performance">23%</span>
-              <button>
+              <button class="icon">
                 <img src="./src/assets/icons/card/attack.svg" alt="" class="icon">
               </button>
             </li>
@@ -168,13 +169,13 @@
         <div class="create_room">
           privada
           <input type="checkbox">
-          <div class="password">
+          <div class="password_input">
             <span>definir senha</span>
             <input type="password">
           </div>
           <div class="button_area">
-            <button class="confirm">confirmar</button>
-            <button class="cancel">cancelar</button>
+            <button class="confirm text">confirmar</button>
+            <button class="cancel text">cancelar</button>
           </div>
         </div>
       </div>
@@ -193,7 +194,7 @@
               <span class="opponent_name"></span>
             </div>
             <div class="selected_attibute"></div>
-            <button id="start_turn">Vai</button>
+            <button id="start_turn text">Vai</button>
           </div>
           <div class="player_card_slot"></div>
         </div>
@@ -214,8 +215,8 @@
         <div class="side_menu_content">
           <h1>CLASSIFICAÇÃO</h1>
           <div class="side_menu_options">
-            <button id="cards_ranking">Cartas</button>
-            <button id="duel_ranking">Duelos</button>
+            <button id="cards_ranking" class="navigation">Cartas</button>
+            <button id="duel_ranking" class="navigation">Duelos</button>
           </div>
         </div>
         <button class="toggle_side_menu">
@@ -263,14 +264,28 @@
     <section class="account hide">
       <div class="password">
         <span>Senha</span>
-        <button>editar</button>
+        <button class="icon">
+          <img src="./src/assets/icons/general/edit.svg" alt="">
+        </button>
         <div class="edit_area">
           <div class="input_area">
-            <input type="password" placeholder="nova senha">
-            <input type="password" placeholder="confirme a nova senha">
-            <input type="password" placeholder="senha atual">
+            <div class="password_input">
+              <span class="placeholder hide">Nova senha</span>
+              <input type="password" placeholder="Nova senha">
+              <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
+            </div>
+            <div class="password_input">
+              <span class="placeholder hide">Confirmar nova senha</span>
+              <input type="password" placeholder="Confirmar nova senha">
+              <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
+            </div>
+            <div class="password_input">
+              <span class="placeholder hide">Senha atual</span>
+              <input type="password" placeholder="Senha atual">
+              <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
+            </div>
           </div>
-          <button class="confirm">confirmar</button>
+          <button class="confirm text">confirmar</button>
         </div>
       </div>
     </section>
@@ -307,15 +322,27 @@
       <div class="input_area"></div>
     </section>
 
-    <section class="signin hide">
+    <section class="signin">
       <div class="box">
         <h1>ENTRAR</h1>
-        <input type="text" placeholder="email">
-        <input type="password" placeholder="senha">
-        <div class="button_area">
-          <button class="confirm">entrar</button>
-          <button>cadastrar</button>
+        <div class="separator_horizontal"></div>
+        <div class="input_area">
+          <div class="wrap_input">
+            <span class="placeholder hide">E-mail</span>
+            <input type="text" placeholder="E-mail">
+          </div>
+          <div class="password_input">
+            <span class="placeholder hide">Senha</span>
+            <input type="password" placeholder="Senha">
+            <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
+          </div>
         </div>
+        <div class="separator_horizontal"></div>
+        <div class="button_area">
+          <button class="confirm text">entrar</button>
+          <button class="text">cadastrar</button>
+        </div>
+        <div class="separator_horizontal"></div>
         <button class="google_signin">
           <span>Entrar com</span>
           <img src="./src/assets/icons/general/google.svg" alt="" class="icon">
@@ -326,14 +353,33 @@
     <section class="signup hide">
       <div class="box">
         <h1>CADASTRAR</h1>
-        <input type="text" placeholder="apelido">
-        <input type="text" placeholder="email">
-        <input type="password" placeholder="senha">
-        <input type="password" placeholder="confirmar senha">
-        <div class="button_area">
-          <button class="confirm">entrar</button>
-          <button>cadastrar</button>
+        <div class="separator_horizontal"></div>
+        <div class="input_area">
+          <div class="name_input">
+            <span class="placeholder hide">Apelido</span>
+            <input type="text" placeholder="Apelido">
+          </div>
+          <div class="email_input">
+            <span class="placeholder hide">E-mail</span>
+            <input type="text" placeholder="Email">
+          </div>
+          <div class="password_input">
+            <span class="placeholder hide">Senha</span>
+            <input type="password" placeholder="Senha">
+            <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
+          </div>
+          <div class="password_input">
+            <span class="placeholder hide">Confirmar senha</span>
+            <input type="password" placeholder="Confirmar senha">
+            <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
+          </div>
         </div>
+        <div class="separator_horizontal"></div>
+        <div class="button_area">
+          <button class="confirm text">entrar</button>
+          <button class="text">cadastrar</button>
+        </div>
+        <div class="separator_horizontal"></div>
         <button class="google_signup">
           <span>Cadastrar com</span>
           <img src="./src/assets/icons/general/google.svg" alt="" class="icon">
@@ -344,10 +390,12 @@
     <section class="signout hide">
       <div class="box">
         <h1>SAIR</h1>
+        <div class="separator_horizontal"></div>
         <p>Deseja realmente sair do jogo?</p>
+        <div class="separator_horizontal"></div>
         <div class="button_area">
-          <button class="cancel">SIM</button>
-          <button class="confirm">CANCELAR</button>
+          <button class="cancel text">SIM</button>
+          <button class="text">CANCELAR</button>
         </div>
       </div>
     </section>
