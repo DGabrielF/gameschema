@@ -1,12 +1,9 @@
 import { attachEventsOnFooterIcons } from "../components/shared/footer/footer.js";
-import { attachEventsOnListMenu, attachEventsOnProfileMenu, attachEventsOnSectionMenuButtons } from "../components/shared/top_menu/top_menu.js"
+import { TopMenu } from "../components/shared/top_menu/top_menu.js"
 import { PasswordInput } from "../components/shared/inputs/password_input.js";
 
 function init() {
-  // Top Menu
-  attachEventsOnListMenu();
-  attachEventsOnProfileMenu();
-  attachEventsOnSectionMenuButtons();
+  TopMenu.load();
 
   // Footer
   attachEventsOnFooterIcons();

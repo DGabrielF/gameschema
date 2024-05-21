@@ -1,20 +1,32 @@
-export const TopMenu = {};
+export const TopMenu = {
+  self: document.querySelector(".top_menu"),
+};
 
-export function attachEventsOnListMenu() {
-  const listMenuToggleSpan = document.querySelector(".list_menu_toggle>span");
-  listMenuToggleSpan.addEventListener("click", () => toggleMenu("list_menu_dropdown"));
-  const listMenuToggleImg = document.querySelector(".list_menu_toggle>img");
-  listMenuToggleImg.addEventListener("click", () => toggleMenu("list_menu_dropdown"));
+TopMenu.load = () => {
+  attachEventsOnMenus();
+  attachEventsOnSectionMenuButtons();
+};
+
+TopMenu.closeMenus = () => {
+  const dropdowns = document.querySelectorAll(".top_menu [class$='_dropdown']");
+  for (const dropdown of dropdowns) {
+    if (!dropdown.classList.contains("hide")) {
+      dropdown.classList.add("hide")
+    }
+  }
 }
 
-export function attachEventsOnProfileMenu() {
-  const listProfileToggleSpan = document.querySelector(".profile_menu_toggle>span");
-  listProfileToggleSpan.addEventListener("click", () => toggleMenu("profile_menu_dropdown"));
-  const listProfileToggleImg = document.querySelector(".profile_menu_toggle>img");
-  listProfileToggleImg.addEventListener("click", () => toggleMenu("profile_menu_dropdown"));
-}
+function attachEventsOnMenus () {
+  const menus = TopMenu.self.querySelectorAll("[class*='menu_toggle']");
+  for (const menu of menus) {
+    const text = menu.querySelector("span");
+    text.addEventListener("click", (event) => toggleMenu(event));
+    const icon = menu.querySelector("img");
+    icon.addEventListener("click", (event) => toggleMenu(event));
+  }
+};
 
-export function attachEventsOnSectionMenuButtons() {
+function attachEventsOnSectionMenuButtons () {
   const topMenuSectionButtons = document.querySelectorAll(".top_menu>[class$='_toggle']>[class*='_menu_dropdown']>*");
   for (const button of topMenuSectionButtons) {
     button.addEventListener("click", () => {
@@ -25,21 +37,13 @@ export function attachEventsOnSectionMenuButtons() {
   }
 }
 
-function toggleMenu(className) {
-  const dropdown = document.querySelector(`.${className}`);
+function toggleMenu(event) {
+  const dropdown = event.target.parentNode.querySelector("nav");
   if (dropdown.classList.contains("hide")) {
-    dropdown.classList.remove("hide")
+    TopMenu.closeMenus();
+    dropdown.classList.remove("hide");
   } else {
-    dropdown.classList.add("hide")
-  }
-}
-
-TopMenu.closeMenus = () => {
-  const dropdowns = document.querySelectorAll(".top_menu [class$='_dropdown']");
-  for (const dropdown of dropdowns) {
-    if (!dropdown.classList.contains("hide")) {
-      dropdown.classList.add("hide")
-    }
+    TopMenu.closeMenus();
   }
 }
 
