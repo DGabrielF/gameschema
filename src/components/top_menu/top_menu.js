@@ -1,3 +1,5 @@
+export const TopMenu = {};
+
 export function attachEventsOnListMenu() {
   const listMenuToggleSpan = document.querySelector(".list_menu_toggle>span");
   listMenuToggleSpan.addEventListener("click", () => toggleMenu("list_menu_dropdown"));
@@ -17,7 +19,8 @@ export function attachEventsOnSectionMenuButtons() {
   for (const button of topMenuSectionButtons) {
     button.addEventListener("click", () => {
       switchPage(button.id);
-      deactivateMenuButton(button.id)
+      deactivateMenuButton(button.id);
+      TopMenu.closeMenus();
     })
   }
 }
@@ -28,6 +31,15 @@ function toggleMenu(className) {
     dropdown.classList.remove("hide")
   } else {
     dropdown.classList.add("hide")
+  }
+}
+
+TopMenu.closeMenus = () => {
+  const dropdowns = document.querySelectorAll(".top_menu [class$='_dropdown']");
+  for (const dropdown of dropdowns) {
+    if (!dropdown.classList.contains("hide")) {
+      dropdown.classList.add("hide")
+    }
   }
 }
 
