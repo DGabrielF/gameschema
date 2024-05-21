@@ -1,22 +1,23 @@
-@import url("./components/buttons.css");
-@import url("./components/inputs.css");
+@import url("../components/shared/buttons/buttons.css");
+@import url("../components/shared/inputs/inputs.css");
 
-@import url("../components/top_menu/top_menu.css");
-@import url("../components/page_market/market.css");
-@import url("../components/page_cards/cards.css");
-@import url("../components/page_pokedex/pokedex.css");
-@import url("../components/page_duel/search_duel.css");
-@import url("../components/page_ranking/ranking.css");
+@import url("../components/shared/top_menu/top_menu.css");
+@import url("../components/shared/footer/footer.css");
 
-@import url("../components/page_profile/profile.css");
-@import url("../components/page_relationship/relationship.css");
-@import url("../components/page_settings/settings.css");
+@import url("../components/pages/market/market.css");
+@import url("../components/pages/cards/cards.css");
+@import url("../components/pages/pokedex/pokedex.css");
+@import url("../components/pages/duel/search_duel.css");
+@import url("../components/pages/ranking/ranking.css");
 
-@import url("../components/page_signin/signin.css");
-@import url("../components/page_signup/signup.css");
-@import url("../components/page_signout/signout.css");
+@import url("../components/pages/profile/profile.css");
+@import url("../components/pages/relationship/relationship.css");
+@import url("../components/pages/settings/settings.css");
 
-@import url("../components/footer/footer.css");
+@import url("../components/pages/signin/signin.css");
+@import url("../components/pages/signup/signup.css");
+@import url("../components/pages/signout/signout.css");
+
 
 * {
   margin: 0;
