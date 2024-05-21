@@ -37,7 +37,7 @@
   </header>
   <main>
     <div class="fade hide"></div>
-    
+
     <div class="toast hide">
       <div class="title">
         <img src="" alt="">
@@ -335,7 +335,7 @@
       <div class="input_area"></div>
     </section>
 
-    <section class="signin">
+    <section class="signin hide">
       <div class="box">
         <h1>ENTRAR</h1>
         <div class="separator_horizontal"></div>
@@ -370,37 +370,32 @@
         <div class="input_area">
           <div class="name_input">
             <span class="placeholder hide">Apelido</span>
-            <input type="text" placeholder="Apelido">
+            <input class="nickname" type="text" placeholder="Apelido">
           </div>
           <div class="email_input">
             <span class="placeholder hide">E-mail</span>
-            <input type="text" placeholder="Email">
+            <input class="email" type="text" placeholder="Email">
           </div>
           <div class="password_input">
             <span class="placeholder hide">Senha</span>
-            <input type="password" placeholder="Senha">
+            <input class="password" type="password" placeholder="Senha">
             <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
           </div>
           <div class="password_input">
             <span class="placeholder hide">Confirmar senha</span>
-            <input type="password" placeholder="Confirmar senha">
+            <input class="confirm_pass" type="password" placeholder="Confirmar senha">
             <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
           </div>
         </div>
         <div class="separator_horizontal"></div>
         <div class="button_area">
-          <button class="confirm text">entrar</button>
-          <button class="text">cadastrar</button>
+          <button class="confirm text register">registrar</button>
+          <button class="text enter">sou membro</button>
         </div>
-        <div class="separator_horizontal"></div>
-        <button class="google_signup">
-          <span>Cadastrar com</span>
-          <img src="./src/assets/icons/general/google.svg" alt="" class="icon">
-        </button>
       </div>
     </section>
 
-    <section class="signout hide">
+    <section class="signout">
       <div class="box">
         <h1>SAIR</h1>
         <div class="separator_horizontal"></div>

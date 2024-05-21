@@ -33,19 +33,18 @@ SignIn.login = async () => {
   } else {
     Toast.open("Sucesso", "Preparando o jogo", Toast.success);
     user = response;
+    Page.change("home")
   }
 }
 
 SignIn.googleLogin = async (user) => {
   const response = await FireAuth.signInWithGoogle();
-  console.log(response)
   if (typeof response === "string") {
     Toast.open("Erro", response, Toast.error);
     user = null;
   } else {
     Toast.open("Sucesso", "Preparando o jogo", Toast.success);
     user = response;
-    console.log(user)
     Page.change("home")
   }
 }

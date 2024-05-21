@@ -3,6 +3,7 @@ import { TopMenu } from "../components/shared/top_menu/top_menu.js"
 import { PasswordInput } from "../components/shared/inputs/password_input.js";
 import { Toast } from "../components/shared/toast/toast.js";
 import { SignIn } from "../components/pages/signin/signin.js";
+import { SignUp } from "../components/pages/signup/signup.js";
 
 export const state = {
   user: {
@@ -14,7 +15,8 @@ export const state = {
 
 function init() {
   TopMenu.load();
-  SignIn.load()
+  SignIn.load();
+  SignUp.load();
 
   // Footer
   attachEventsOnFooterIcons();
