@@ -3,14 +3,16 @@ export const Toast = {
   title: document.querySelector(".toast h2"),
   message: document.querySelector(".toast span.message"),
   exit: document.querySelector(".toast button.close"),
+  error: "error",
+  success: "success",
 };
 
 Toast.open = (title, message, type) => {
   if (type) {
     Toast.self.classList.add(type.toLowerCase());
-    const images = Toast.self.querySelectorAll("img");
+    const images = Toast.self.querySelectorAll(".title img");
     for (const image of images) {
-      image.src = ``
+      image.src = `./src/assets/icons/general/${type}.svg`
     }
   }
   Toast.title.textContent = title.toUpperCase();

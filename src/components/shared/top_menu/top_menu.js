@@ -1,3 +1,5 @@
+import { Page } from "../../../scripts/services/system/page.js";
+
 export const TopMenu = {
   self: document.querySelector(".top_menu"),
 };
@@ -30,7 +32,7 @@ function attachEventsOnSectionMenuButtons () {
   const topMenuSectionButtons = document.querySelectorAll(".top_menu>[class$='_toggle']>[class*='_menu_dropdown']>*");
   for (const button of topMenuSectionButtons) {
     button.addEventListener("click", () => {
-      switchPage(button.id);
+      Page.change(button.id);
       deactivateMenuButton(button.id);
       TopMenu.closeMenus();
     })

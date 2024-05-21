@@ -38,6 +38,7 @@ input:disabled {
 
 [class$="_input"] {
   width: 100%;
+  max-width: 500px;
 
   display: flex;
   gap: 5px;
@@ -57,7 +58,4 @@ input:disabled {
   align-items: center;
   justify-content: center;
   gap: 10px;
-}
-.input_area > * {
-  width: 100%;
 }

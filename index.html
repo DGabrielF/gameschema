@@ -35,9 +35,22 @@
       </div>
     </div>
   </header>
-
   <main>
     <div class="fade hide"></div>
+    
+    <div class="toast hide">
+      <div class="title">
+        <img src="" alt="">
+        <h2></h2>
+        <img src="" alt="">
+      </div>
+      <div class="separator_horizontal"></div>
+      <span class="message"></span>
+      <button class="close">
+        <img src="./src/assets/icons/general/close.svg" alt="" class="icon">
+      </button>
+    </div>
+
     <section class="home hide"></section>
 
     <section class="market hide">
@@ -329,18 +342,18 @@
         <div class="input_area">
           <div class="wrap_input">
             <span class="placeholder hide">E-mail</span>
-            <input type="text" placeholder="E-mail">
+            <input class="user_email" type="text" placeholder="E-mail">
           </div>
           <div class="password_input">
             <span class="placeholder hide">Senha</span>
-            <input type="password" placeholder="Senha">
+            <input class="password" type="password" placeholder="Senha">
             <img src="./src/assets/icons/general/eye-opened.svg" alt="" class="icon">
           </div>
         </div>
         <div class="separator_horizontal"></div>
         <div class="button_area">
-          <button class="confirm text">entrar</button>
-          <button class="text">cadastrar</button>
+          <button class="confirm text enter">entrar</button>
+          <button class="text register">cadastrar</button>
         </div>
         <div class="separator_horizontal"></div>
         <button class="google_signin">

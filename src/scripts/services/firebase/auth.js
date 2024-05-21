@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 
 import { firebaseErrorMessage } from "./errors.js";
 import { app } from './app.js';
@@ -15,6 +15,16 @@ FireAuth.signIn = async (email, password) => {
     return firebaseErrorMessage[error.message];
   }
 }
+
+FireAuth.signInWithGoogle = async () => {
+  try {
+    const googleProvider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, googleProvider);
+    return result.user
+  } catch (error) {
+    return firebaseErrorMessage[error.message];
+  }
+};
 
 FireAuth.signOut = async () => {
   try {
