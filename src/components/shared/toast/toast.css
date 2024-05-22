@@ -21,9 +21,7 @@
 .toast.rise_animation{
   animation: riseAndDown 3s forwards;
 }
-.toast.hide {
-  display: none;
-}
+
 
 .toast .title {
   width: 100%;

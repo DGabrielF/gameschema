@@ -8,6 +8,9 @@ export const Toast = {
 };
 
 Toast.open = (title, message, type) => {
+  if (Toast.self.classList.contains("rise_animation")) {
+    Toast.close();
+  }
   if (type) {
     Toast.self.classList.add(type.toLowerCase());
     const images = Toast.self.querySelectorAll(".title img");
