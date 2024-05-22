@@ -5,17 +5,10 @@ import { Toast } from "../components/shared/toast/toast.js";
 import { SignIn } from "../components/pages/signin/signin.js";
 import { SignUp } from "../components/pages/signup/signup.js";
 import { SignOut } from "../components/pages/signout/signout.js";
-import { State } from "./services/system/state.js";
-
-export const state = {
-  user: {
-    uid: null,
-    name: "Anônimo",
-  }
-};
-
+import { State } from "./services/engine/state.js";
 
 async function init() {
+  State.userUpdate();
   TopMenu.load();
   await SignIn.load();
   await SignUp.load();

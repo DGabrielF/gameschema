@@ -1,7 +1,7 @@
 import { FireAuth } from "../../../scripts/services/firebase/auth.js";
 import { Firestore } from "../../../scripts/services/firebase/firestore.js";
-import { Page } from "../../../scripts/services/system/page.js";
-import { State } from "../../../scripts/services/system/state.js";
+import { Page } from "../../../scripts/services/engine/page.js";
+import { State } from "../../../scripts/services/engine/state.js";
 import { Toast } from "../../shared/toast/toast.js";
 
 export const SignIn = {
@@ -31,7 +31,7 @@ SignIn.login = async () => {
   const response = await FireAuth.signIn(email, password);
   if (typeof response === "string") {
     Toast.open("Erro", response, Toast.error);
-    await State.userUpdate(null);
+    await State.userUpdate();
   } else {
     Toast.open("Sucesso", "Preparando o jogo", Toast.success);
     const userData = await Firestore.fetchDocById("Users", response.uid);
@@ -44,7 +44,7 @@ SignIn.googleSignin = async () => {
   const response = await FireAuth.signInWithGoogle();
   if (typeof response === "string") {
     Toast.open("Erro", response, Toast.error);
-    await State.userUpdate(null);
+    await State.userUpdate();
   } else {
     Toast.open("Sucesso", "Preparando o jogo", Toast.success);
     const userData = await Firestore.fetchDocById("Users", response.uid);

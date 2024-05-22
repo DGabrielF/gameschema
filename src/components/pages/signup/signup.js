@@ -1,6 +1,6 @@
 import { FireAuth } from "../../../scripts/services/firebase/auth.js";
-import { Page } from "../../../scripts/services/system/page.js";
-import { State } from "../../../scripts/services/system/state.js";
+import { Page } from "../../../scripts/services/engine/page.js";
+import { State } from "../../../scripts/services/engine/state.js";
 import { Toast } from "../../shared/toast/toast.js";
 
 export const SignUp = {

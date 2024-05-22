@@ -1,4 +1,5 @@
-import { Page } from "../../../scripts/services/system/page.js";
+import { Page } from "../../../scripts/services/engine/page.js";
+import { State } from "../../../scripts/services/engine/state.js";
 
 export const TopMenu = {
   self: document.querySelector(".top_menu"),
@@ -7,13 +8,33 @@ export const TopMenu = {
 TopMenu.load = () => {
   attachEventsOnMenus();
   attachEventsOnSectionMenuButtons();
+
+  TopMenu.update()
 };
+
+TopMenu.update = () => {
+  const name = TopMenu.self.querySelector("span.name");
+  name.textContent = State.user.name;
+  
+  const topMenuSectionButtons = document.querySelectorAll(".top_menu>[class$='_toggle']>[class*='_menu_dropdown']>*");
+  for (const button of topMenuSectionButtons) {
+    const isOnline = State.user.uid ? "online" : "offline"
+    const isAnListItem = Page.topMenu.list[isOnline].includes(button.id);
+    const isAnProfilteItem = Page.topMenu.profile[isOnline].includes(button.id);
+    if (isAnListItem || isAnProfilteItem) {
+      button.classList.remove("hide");
+    } else {
+      button.classList.add("hide");
+    }
+  }
+
+}
 
 TopMenu.closeMenus = () => {
   const dropdowns = document.querySelectorAll(".top_menu [class$='_dropdown']");
   for (const dropdown of dropdowns) {
     if (!dropdown.classList.contains("hide")) {
-      dropdown.classList.add("hide")
+      dropdown.classList.add("hide");
     }
   }
 }
@@ -47,19 +68,6 @@ function toggleMenu(event) {
   } else {
     TopMenu.closeMenus();
   }
-}
-
-function switchPage(page) {
-  const sectionList = document.querySelectorAll("section");
-  for (const section of sectionList) {
-    if (section.classList.contains(page)) {
-      if (section.classList.contains("hide")) {
-        section.classList.remove("hide");
-      };
-    } else {
-      section.classList.add("hide");
-    };
-  };
 }
 
 function deactivateMenuButton(clickedButton) {

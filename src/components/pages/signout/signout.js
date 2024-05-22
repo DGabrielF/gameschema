@@ -1,6 +1,7 @@
 import { FireAuth } from "../../../scripts/services/firebase/auth.js";
-import { Page } from "../../../scripts/services/system/page.js";
+import { Page } from "../../../scripts/services/engine/page.js";
 import { Toast } from "../../shared/toast/toast.js";
+import { State } from "../../../scripts/services/engine/state.js";
 
 export const SignOut = {
   self: document.querySelector(".signout .box"),
@@ -17,9 +18,9 @@ SignOut.exit = async () => {
   const response = await FireAuth.signOut()
   if (typeof response === "string") {
     Toast.open("Erro", response, Toast.error);
-    user = null;
   } else {
     Toast.open("Sucesso", "Até mais", Toast.success);
+    await State.userUpdate()
     Page.change("home")
   }
 }

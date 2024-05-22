@@ -1,4 +1,15 @@
-export const Page = {};
+export const Page = {
+  topMenu: {
+    list:{
+      online: ["market", "cards", "pokedex", "duel", "ranking"],
+      offline: ["market", "ranking"]
+    },
+    profile: {
+      online: ["profile", "account", "relatioinship", "settings", "signout"],
+      offline: ["signin", "signup", "setting"]
+    }
+  }
+};
 
 Page.change = (page) => {
   const sectionList = document.querySelectorAll("section");
