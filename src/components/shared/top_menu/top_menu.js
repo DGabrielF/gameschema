@@ -1,8 +1,12 @@
-import { Page } from "../../../scripts/services/engine/page.js";
-import { State } from "../../../scripts/services/engine/state.js";
+import { Page } from "../../../scripts/engine/page.js";
+import { State } from "../../../scripts/engine/state.js";
 
 export const TopMenu = {
   self: document.querySelector(".top_menu"),
+  load: () => {},
+  update: () => {},
+  closeMenus: () => {},
+  reactivateProfileMenuButtons: () => {},
 };
 
 TopMenu.load = () => {
@@ -36,6 +40,13 @@ TopMenu.closeMenus = () => {
     if (!dropdown.classList.contains("hide")) {
       dropdown.classList.add("hide");
     }
+  }
+}
+
+TopMenu.reactivateProfileMenuButtons = () => {
+  const topMenuSectionButtons = document.querySelectorAll(".top_menu>.profile_menu_toggle>[class*='_menu_dropdown']>*");
+  for (const button of topMenuSectionButtons) {
+    button.disabled = false;    
   }
 }
 
@@ -80,3 +91,4 @@ function deactivateMenuButton(clickedButton) {
     }
   }
 }
+
