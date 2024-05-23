@@ -1,5 +1,4 @@
-import { FloatBox } from "../float/float.js";
-import { TopMenu } from "../top_menu/top_menu.js";
+import { Page } from "../../../scripts/engine/page.js";
 
 export const Fade = {
   self: document.querySelector(".fade"),
@@ -22,9 +21,6 @@ Fade.close = () => {
 
 function attachEvent() {
   Fade.self.addEventListener("click", () => {
-    TopMenu.closeMenus();
-    TopMenu.reactivateProfileMenuButtons()
-    FloatBox.close();
-    Fade.close();
+    Page.change("close");
   });
 };

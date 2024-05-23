@@ -1,4 +1,4 @@
-import { TopMenu } from "../../../components/shared/top_menu/top_menu.js";
+import { TopMenu } from "../../components/shared/top_menu/top_menu.js";
 
 export const State = {
   default: {

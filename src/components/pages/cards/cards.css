@@ -3,9 +3,6 @@
   flex-direction: column;
   align-items: center;
 }
-.cards.hide {
-  display: none;
-}
 
 .cards>span {
   padding: 5px;

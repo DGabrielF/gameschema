@@ -1,7 +1,7 @@
 import { FireAuth } from "../../../scripts/services/firebase/auth.js";
-import { Page } from "../../../scripts/services/engine/page.js";
+import { Page } from "../../../scripts/engine/page.js";
 import { Toast } from "../../shared/toast/toast.js";
-import { State } from "../../../scripts/services/engine/state.js";
+import { State } from "../../../scripts/engine/state.js";
 
 export const SignOut = {
   self: document.querySelector(".signout .box"),

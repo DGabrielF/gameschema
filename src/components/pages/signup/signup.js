@@ -1,6 +1,6 @@
 import { FireAuth } from "../../../scripts/services/firebase/auth.js";
-import { Page } from "../../../scripts/services/engine/page.js";
-import { State } from "../../../scripts/services/engine/state.js";
+import { Page } from "../../../scripts/engine/page.js";
+import { State } from "../../../scripts/engine/state.js";
 import { Toast } from "../../shared/toast/toast.js";
 
 export const SignUp = {
@@ -36,6 +36,6 @@ SignUp.register = async () => {
   } else {
     Toast.open("Sucesso", "Estamos armazenando suas informações", Toast.success);
     State.userUpdate(response);
-    Page.change("home");
+    Page.change("close");
   }
 }

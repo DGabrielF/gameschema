@@ -1,7 +1,7 @@
 import { FireAuth } from "../../../scripts/services/firebase/auth.js";
 import { Firestore } from "../../../scripts/services/firebase/firestore.js";
-import { Page } from "../../../scripts/services/engine/page.js";
-import { State } from "../../../scripts/services/engine/state.js";
+import { Page } from "../../../scripts/engine/page.js";
+import { State } from "../../../scripts/engine/state.js";
 import { Toast } from "../../shared/toast/toast.js";
 
 export const SignIn = {
@@ -36,7 +36,7 @@ SignIn.login = async () => {
     Toast.open("Sucesso", "Preparando o jogo", Toast.success);
     const userData = await Firestore.fetchDocById("Users", response.uid);
     await State.userUpdate(userData);
-    Page.change("home")
+    Page.change("close");
   }
 }
 

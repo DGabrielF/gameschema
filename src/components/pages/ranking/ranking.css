@@ -3,9 +3,6 @@
   align-items: center;
   flex-direction: row;
 }
-.ranking.hide {
-  display: none;
-}
 
 .ranking_content {
   padding: 10px;

@@ -3,9 +3,6 @@
   align-items: center;
   flex-direction: row;
 }
-.market.hide {
-  display: none;
-}
 
 .side_menu {
   display: flex;

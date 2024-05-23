@@ -6,7 +6,7 @@ export const TopMenu = {
   load: () => {},
   update: () => {},
   closeMenus: () => {},
-  reactivateProfileMenuButtons: () => {},
+  deactivateMenuButton: () => {},
 };
 
 TopMenu.load = () => {
@@ -22,10 +22,10 @@ TopMenu.update = () => {
   
   const topMenuSectionButtons = document.querySelectorAll(".top_menu>[class$='_toggle']>[class*='_menu_dropdown']>*");
   for (const button of topMenuSectionButtons) {
-    const isOnline = State.user.uid ? "online" : "offline"
-    const isAnListItem = Page.topMenu.list[isOnline].includes(button.id);
-    const isAnProfilteItem = Page.topMenu.profile[isOnline].includes(button.id);
-    if (isAnListItem || isAnProfilteItem) {
+    const isOnline = !!State.user.uid
+    const isAnOnlineItem = Page.topMenu.items[button.id].online;
+    const isAnOfflineItem = Page.topMenu.items[button.id].offline;
+    if (isOnline && isAnOnlineItem || !isOnline && isAnOfflineItem) {
       button.classList.remove("hide");
     } else {
       button.classList.add("hide");
@@ -43,13 +43,6 @@ TopMenu.closeMenus = () => {
   }
 }
 
-TopMenu.reactivateProfileMenuButtons = () => {
-  const topMenuSectionButtons = document.querySelectorAll(".top_menu>.profile_menu_toggle>[class*='_menu_dropdown']>*");
-  for (const button of topMenuSectionButtons) {
-    button.disabled = false;    
-  }
-}
-
 function attachEventsOnMenus () {
   const menus = TopMenu.self.querySelectorAll("[class*='menu_toggle']");
   for (const menu of menus) {
@@ -61,12 +54,10 @@ function attachEventsOnMenus () {
 };
 
 function attachEventsOnSectionMenuButtons () {
-  const topMenuSectionButtons = document.querySelectorAll(".top_menu>[class$='_toggle']>[class*='_menu_dropdown']>*");
+  const topMenuSectionButtons = TopMenu.self.querySelectorAll("[class$='_toggle']>[class*='_menu_dropdown']>*");
   for (const button of topMenuSectionButtons) {
     button.addEventListener("click", () => {
       Page.change(button.id);
-      deactivateMenuButton(button.id);
-      TopMenu.closeMenus();
     })
   }
 }
@@ -81,10 +72,11 @@ function toggleMenu(event) {
   }
 }
 
-function deactivateMenuButton(clickedButton) {
+TopMenu.deactivateMenuButton = () => {
   const topMenuSectionButtons = document.querySelectorAll(".top_menu>[class$='_toggle']>[class*='_menu_dropdown']>*");
   for (const button of topMenuSectionButtons) {
-    if (clickedButton === button.id) {
+    const selectedButtons = Page.getSelectedMenuItems();
+    if (selectedButtons.find(item => item.id === button.id)) {
       button.disabled = true;
     } else {
       button.disabled = false;
