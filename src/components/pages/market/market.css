@@ -4,28 +4,6 @@
   flex-direction: row;
 }
 
-.side_menu {
-  display: flex;
-  height: 100%;
-  background-color: #e8e8e8;
-}
-.side_menu_content {
-  display: flex;
-  flex-direction: column;
-}
-.side_menu_options {
-  display: flex;
-  flex-direction: column;
-}
-.toggle_side_menu {
-  width: 25px;
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .market_content {
   padding: 10px;
   margin: 10px 10px;

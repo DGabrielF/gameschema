@@ -1,0 +1,146 @@
+:root{
+  --initial_rotate: 0deg;
+}
+
+.side_menu {
+  padding: 2px;
+  height: 100%;
+
+  background-color: #e8e8e8;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.side_menu_content {
+  padding: 10px 0 0 5px;
+  width: 160px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.side_menu_options {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+}
+
+.toggle_side_menu {
+  width: 25px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toggle_side_menu:active {
+  top: initial;
+  background-color: #f4f4f4;
+}
+
+.toggle_side_menu .icon.right {
+  rotate: calc(var(--initial_rotate) + 180deg);
+}
+.toggle_side_menu .icon.right.rotate {
+  animation: horizontalHalfTurn 0.7s forwards ease;
+}
+.toggle_side_menu .icon.left {
+  rotate: calc(var(--initial_rotate) + 0deg);
+}
+.toggle_side_menu .icon.left.rotate {
+  animation: horizontalHalfTurn 0.7s reverse forwards ease;
+}
+
+@keyframes horizontalHalfTurn {
+  0% {
+    rotate: calc(var(--initial_rotate) + 0deg);
+  }
+  15% {
+    rotate: calc(var(--initial_rotate) + 10deg);
+  }
+  30% {
+    rotate: calc(var(--initial_rotate) - 20deg);
+  }
+  70% {
+    rotate: calc(var(--initial_rotate) + 200deg);
+  }
+  85% {
+    rotate: calc(var(--initial_rotate) + 170deg)
+  }
+  100% {
+    rotate: calc(var(--initial_rotate) + 180deg)
+  }
+}
+@keyframes verticalHalfTurn {
+  0% {
+    rotate: calc(var(--initial_rotate) + 90deg);
+  }
+  15% {
+    rotate: calc(var(--initial_rotate) + 100deg);
+  }
+  30% {
+    rotate: calc(var(--initial_rotate) - 110deg);
+  }
+  70% {
+    rotate: calc(var(--initial_rotate) + 290deg);
+  }
+  85% {
+    rotate: calc(var(--initial_rotate) + 260deg)
+  }
+  100% {
+    rotate: calc(var(--initial_rotate) + 270deg)
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .side_menu {
+    height: calc(100% - 44px - 35px);
+    position: fixed;
+    top: 44px;
+    z-index: 1;
+  }
+}
+
+@media only screen and (max-width: 249px) {
+  .side_menu {
+    padding: 2px;
+    height: auto;
+
+    border-bottom: 2px solid #dedede;
+  
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  .side_menu_content {
+    padding: 10px 0 0 0;
+    width: calc(100vw - 4px);
+    height: auto;
+  }
+  .toggle_side_menu {
+    width: calc(100vw - 4px);
+    height: 25px;
+  }
+  .toggle_side_menu .icon.right {
+    rotate: 270deg;
+  }
+  .toggle_side_menu .icon.right.rotate {
+    animation: verticalHalfTurn 0.7s forwards ease;
+  }
+  .toggle_side_menu .icon.left {
+    rotate: 90deg
+  }
+  .toggle_side_menu .icon.left.rotate {
+    animation: verticalHalfTurn 0.7s reverse forwards ease;
+  }
+}

@@ -170,3 +170,22 @@ function showSection(page) {
     }    
   }
 }
+
+Page.changeContent = () => {
+
+}
+
+Page.showContent = (content, parentSection) => {
+  console.log("id do conteudo a ser exibido: ", content)
+  console.log("seção que exibirá o conteúdo: ", parentSection)
+  const contentArea = parentSection.querySelector(`[class*='${parentSection.classList[0]}_content']`);
+  const subsecions = contentArea.querySelectorAll("*")
+  for (const subsecion of subsecions) {
+    if (subsecion.classList.contains(content)) {
+      subsecion.classList.remove("hide");
+    } else {
+      subsecion.classList.add("hide");
+    }
+  }
+  console.log(contentArea)
+}

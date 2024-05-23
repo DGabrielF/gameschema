@@ -8,6 +8,7 @@ import { SignOut } from "../components/pages/signout/signout.js";
 import { State } from "./engine/state.js";
 import { FloatBox } from "../components/shared/float/float.js";
 import { Fade } from "../components/shared/fade/fade.js";
+import { SideMenu } from "../components/shared/side_menu/side_menu.js";
 
 async function init() {
   State.userUpdate();
@@ -17,6 +18,7 @@ async function init() {
   await SignIn.load();
   await SignUp.load();
   await SignOut.load();
+  SideMenu.load()
 
   // Footer
   attachEventsOnFooterIcons();
