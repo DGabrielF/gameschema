@@ -11,7 +11,6 @@ import { Fade } from "../components/shared/fade/fade.js";
 import { SideMenu } from "../components/shared/side_menu/side_menu.js";
 import { Market } from "../components/pages/market/market.js";
 import { Dialog } from "../components/shared/dialog/dialog.js";
-import { Card } from "../components/shared/card/card.js";
 
 async function init() {
   State.userUpdate();
@@ -28,7 +27,7 @@ async function init() {
   // Footer
   attachEventsOnFooterIcons();
 
-  PasswordInput.attachToggleEventAtIcons()
+  PasswordInput.attachToggleEventAtIcons();
 
   const testButton = document.querySelector("#teste");
   testButton.addEventListener("click", () => {

@@ -6,11 +6,18 @@ export const State = {
     user: {
       uid: null,
       name: "Anônimo",
-      coins: 0,
+      coins: 2500,
       luck: 0,
       cards: {
-        all: [],
-        hand: [],
+        all: [
+          {id: 1, quantity: 1},
+          {id: 4, quantity: 1},
+          {id: 7, quantity: 1},
+          {id: 12, quantity: 1},
+          {id: 16, quantity: 1},
+          {id: 25, quantity: 1},
+        ],
+        hand: [1, 4, 7, 12, 16, 25],
       },
       relationship: {
         friends: [],

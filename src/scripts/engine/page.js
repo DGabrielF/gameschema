@@ -1,3 +1,4 @@
+import { Market } from "../../components/pages/market/market.js";
 import { Dialog } from "../../components/shared/dialog/dialog.js";
 import { Fade } from "../../components/shared/fade/fade.js";
 import { FloatBox } from "../../components/shared/float/float.js";
@@ -173,15 +174,9 @@ function showSection(page) {
   }
 }
 
-Page.changeContent = () => {
-
-}
-
 Page.showContent = (content, parentSection) => {
-  console.log("id do conteudo a ser exibido: ", content)
-  console.log("seção que exibirá o conteúdo: ", parentSection)
   const contentArea = parentSection.querySelector(`[class*='${parentSection.classList[0]}_content']`);
-  const subsecions = contentArea.querySelectorAll("*")
+  const subsecions = contentArea.querySelectorAll(":scope > *")
   for (const subsecion of subsecions) {
     if (subsecion.classList.contains(content)) {
       subsecion.classList.remove("hide");
@@ -189,5 +184,5 @@ Page.showContent = (content, parentSection) => {
       subsecion.classList.add("hide");
     }
   }
-  console.log(contentArea)
+  Market.fetchDataSubsecion(content);
 }

@@ -8,7 +8,7 @@
   padding: 10px;
   margin: 10px 10px;
 
-  width: 85%;
+  width: 100%;
   height: 93%;
 
   border: 2px solid #dedede;
@@ -18,7 +18,15 @@
   display: flex;
   flex-direction: column;
 }
+
+.market_type {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .money_area {
+  min-width: 140px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -30,6 +38,7 @@
   justify-content: flex-end;
   gap: 5px;
 }
+
 .offer_list {
   display: flex;
   flex-direction: column;
@@ -54,4 +63,53 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.3vw;
+}
+
+.search_area input {
+  max-width: none;
+  width: 100%;
+}
+
+.create_buy_offer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.create_buy_offer .detail {
+  min-width: 16vw;
+  width: 16vw;
+  min-height: 22vw;
+  height: 22vw;
+}
+
+.offer_filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.offer_filter .filter {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+@media screen and (max-width: 449px) {
+  .market_content {
+    margin: 10px 10px 10px 35px;
+
+    height: 93%;
+  }
+}
+
+@media only screen and (max-width: 249px) {
+  .market_content {
+    margin: 35px 10px 10px 10px;
+
+    height: calc(93% - 25px);
+  }
 }

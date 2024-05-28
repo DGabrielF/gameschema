@@ -1,4 +1,4 @@
-import { getFirestore, doc, getDoc, getDocs, setDoc, collection, query, limit, startAfter } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, addDoc, getDoc, getDocs, setDoc, collection, query, limit, startAfter } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 import { app } from './app.js';
 import { firebaseErrorMessage } from './errors.js';
@@ -69,6 +69,16 @@ Firestore.createUserData = async (userId, userName) => {
         blocked: []
       }
     });
+  } catch (error) {
+    return firebaseErrorMessage[error.message];
+  }
+}
+
+Firestore.createData = async (collectionName, data) => {
+  try {
+    const colRef = collection(db, collectionName);
+    const docRef = await addDoc(colRef, data);
+    return docRef
   } catch (error) {
     return firebaseErrorMessage[error.message];
   }
