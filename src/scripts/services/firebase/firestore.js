@@ -1,4 +1,4 @@
-import { getFirestore, doc, getDoc, getDocs, setDoc, collection } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, getDoc, getDocs, setDoc, collection, query, limit, startAfter } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 import { app } from './app.js';
 import { firebaseErrorMessage } from './errors.js';
@@ -21,6 +21,30 @@ Firestore.fetchDataFromFirebase = async(collectionName) => {
 
   }
 }
+
+Firestore.fetchLimitedDataFromFirebase = async (collectionName, limitCount = 10, startAfterDoc = null) => {
+  try {
+    let collectionRef = collection(db, collectionName);
+    let q;
+
+    if (startAfterDoc) {
+      q = query(collectionRef, limit(limitCount), startAfter(startAfterDoc));
+    } else {
+      q = query(collectionRef, limit(limitCount));
+    }
+
+    const snapshot = await getDocs(q);
+    const dataFromFirestore = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    const lastDoc = snapshot.docs[snapshot.docs.length - 1];
+
+    return { data: dataFromFirestore, lastDoc: lastDoc };
+  } catch (error) {
+    return firebaseErrorMessage[error.message];
+  }
+};
 
 Firestore.checkUserExists = async (userId) => {
   const docRef = doc(db, "Users", userId);

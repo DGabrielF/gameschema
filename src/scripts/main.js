@@ -9,16 +9,21 @@ import { State } from "./engine/state.js";
 import { FloatBox } from "../components/shared/float/float.js";
 import { Fade } from "../components/shared/fade/fade.js";
 import { SideMenu } from "../components/shared/side_menu/side_menu.js";
+import { Market } from "../components/pages/market/market.js";
+import { Dialog } from "../components/shared/dialog/dialog.js";
+import { Card } from "../components/shared/card/card.js";
 
 async function init() {
   State.userUpdate();
   Fade.load();
   TopMenu.load();
   FloatBox.load();
+  Dialog.load();
+  SideMenu.load();
   await SignIn.load();
   await SignUp.load();
   await SignOut.load();
-  SideMenu.load()
+  await Market.load();
 
   // Footer
   attachEventsOnFooterIcons();

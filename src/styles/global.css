@@ -1,4 +1,6 @@
 @import url("../components/shared/buttons/buttons.css");
+@import url("../components/shared/dialog/dialog.css");
+@import url("../components/shared/card/card.css");
 @import url("../components/shared/inputs/inputs.css");
 @import url("../components/shared/toast/toast.css");
 @import url("../components/shared/float/float.css");
@@ -9,6 +11,7 @@
 @import url("../components/shared/footer/footer.css");
 
 @import url("../components/pages/market/market.css");
+@import url("../components/pages/market/package.css");
 @import url("../components/pages/cards/cards.css");
 @import url("../components/pages/pokedex/pokedex.css");
 @import url("../components/pages/duel/search_duel.css");

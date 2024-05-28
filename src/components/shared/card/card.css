@@ -1,0 +1,112 @@
+.card{
+  padding: 0.483vw;
+  min-width: 14.5vw;
+  width: 14.5vw;
+  min-height: 20.9vw;
+  height: 20.9vw;
+
+  border: 1px solid #646464;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #010101;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.card img{
+  width: 1.573vw;
+  height: 1.573vw;
+}
+
+.card>.name {
+  padding: 3px 0 2px 0;
+  width: 100%;
+  height: calc(1.046vw + 4px);
+
+  
+  color: #ffffff;
+  font-size: calc(1.046vw + 2px);
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-overflow: ellipsis;
+
+  border-radius: 5px;
+  background: linear-gradient(90deg, #00000070, #00000090, #00000070);
+}
+
+.card>.details {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+.card>.details>.shape {
+  height: calc(0.206vw + 1.573vw);
+
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+.card>.details>.types {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+.card>.details>.types>* {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+
+.card>.image {
+  border: 1px solid #646464;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #ffffff70, #ffffff90, #ffffff70);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card>.image>img {
+  width: 14.723vw;
+  height: 14.723vw;
+}
+
+.card>.attributes {
+  width: 100%;
+
+  display: grid;
+  gap: 2px;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card .attribute {
+  padding: 0.206vw;
+  width: 100%;
+
+  border-radius: 5px;
+  background-color: #fff2;
+
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.card .attribute span {
+  font-size: 1.046vw;
+}

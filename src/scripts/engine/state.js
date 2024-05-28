@@ -1,3 +1,4 @@
+import { Market } from "../../components/pages/market/market.js";
 import { TopMenu } from "../../components/shared/top_menu/top_menu.js";
 
 export const State = {
@@ -6,6 +7,7 @@ export const State = {
       uid: null,
       name: "Anônimo",
       coins: 0,
+      luck: 0,
       cards: {
         all: [],
         hand: [],
@@ -42,6 +44,7 @@ State.userUpdate = async (user) => {
   } else {
     State.user = State.default.user;
   }
-  TopMenu.update()
+  TopMenu.update();
+  Market.update();
 }
 

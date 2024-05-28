@@ -1,3 +1,4 @@
+import { Dialog } from "../../components/shared/dialog/dialog.js";
 import { Fade } from "../../components/shared/fade/fade.js";
 import { FloatBox } from "../../components/shared/float/float.js";
 import { TopMenu } from "../../components/shared/top_menu/top_menu.js";
@@ -112,6 +113,7 @@ Page.change = (page) => {
     TopMenu.deactivateMenuButton();
     FloatBox.close();
     Fade.close();
+    Dialog.close();
     return;
   };
 

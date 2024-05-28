@@ -1,0 +1,15 @@
+.dialog {
+  padding: 10px;
+
+  border: 2px solid #dedede;
+  border-radius: 10px;
+  background-color: #e8e8e8;
+
+  display: flex;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}

@@ -36,6 +36,8 @@
     </div>
   </header>
   <main>
+
+    <div id="card"></div>
     <div class="fade hide"></div>
 
     <div class="toast hide">
@@ -68,22 +70,32 @@
         </button>
       </div>
       <div class="market_content">
-        <div class="package">
-          Teste Package
+        <div class="package market_type">
+          <h2>Tente a sorte, que tal um pacote?</h2>
+          <div class="separator_horizontal"></div>
+          <div class="money_area">
+            <p>Você tem P$</p>
+            <span class="money">10000</span>
+          </div>
+          <div class="separator_horizontal"></div>
+          <div class="offer_list"></div>
+          <div class="display hide">
+            <h2>Parabéns! Você acaba de conseguir:</h2>
+            <div class="card_area"></div>
+            <button class="close">
+              <img src="./src/assets/icons/general/close.svg" alt="" class="icon">
+            </button>
+          </div>
         </div>
-        <div class="buy">
+        <div class="buy hide">
           Teste Buy
         </div>
-        <div class="money_area">
-          <p>Você tem P$</p>
-          <span id="money">10000</span>
-        </div>
-        <div class="search_area">
+        <div class="search_area hide">
           <span>BUSCAR</span>
           <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
           <input type="search" name="" id="">
         </div>
-        <div class="offer_filter">
+        <div class="offer_filter hide">
           <span>Ordenar por</span>
           <div class="filter_types">
             <span class="selected_filter">selecionado</span>
@@ -219,7 +231,7 @@
         <div class="select_attribute">
           <img src="./src/assets/icons/card/height.svg" alt="" class="icon">
           <img src="./src/assets/icons/card/weight.svg" alt="" class="icon">
-          <img src="./src/assets/icons/card/hp.svg" alt="" class="icon">
+          <img src="./src/assets/icons/card/health.svg" alt="" class="icon">
           <img src="./src/assets/icons/card/speed.svg" alt="" class="icon">
           <img src="./src/assets/icons/card/attack.svg" alt="" class="icon">
           <img src="./src/assets/icons/card/defense.svg" alt="" class="icon">
@@ -426,6 +438,23 @@
         </div>
       </div>
     </section>
+
+    <div class="dialog hide">
+      <div class="package hide">
+        <h2>Confirmar Compra</h2>
+        <div class="separator_horizontal"></div>
+        <p>Você deseja realmente comprar o pacote <span class="name"></span> com <span class="quantity"></span> por <span class="price"></span>?</p>
+        <div class="separator_horizontal"></div>
+        <div class="button_area">
+          <button class="confirm">sim</button>
+          <button class="deny">não</button>
+        </div>
+      </div>
+      <div class="purchased_cards">
+        <div class="purchased_cards_area"></div>
+        <button class="deny">confirmar</button>
+      </div>
+    </div>
   </main>
 
   <footer>
