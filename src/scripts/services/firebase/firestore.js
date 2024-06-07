@@ -1,4 +1,4 @@
-import { getFirestore, doc, addDoc, getDoc, getDocs, setDoc, collection, query, limit, startAfter } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, addDoc, getDoc, getDocs, setDoc, deleteDoc, collection, query, limit, startAfter } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 import { app } from './app.js';
 import { firebaseErrorMessage } from './errors.js';
@@ -46,6 +46,25 @@ Firestore.fetchLimitedDataFromFirebase = async (collectionName, limitCount = 10,
   }
 };
 
+Firestore.fetchDocById = async (collectionName, docId) => {
+  try {
+    const docRef = doc(db, collectionName, docId);
+    const docSnapshot = await getDoc(docRef);
+
+    if (docSnapshot.exists()) {
+      const data = {
+        uid: docSnapshot.id,
+        ...docSnapshot.data(),
+      };
+      return data;
+    } else {
+      return "Usuário não encontrado.";
+    }
+  } catch (error) {
+    return firebaseErrorMessage[error.message];
+  }
+}
+
 Firestore.checkUserExists = async (userId) => {
   const docRef = doc(db, "Users", userId);
   const docSnap = await getDoc(docRef)
@@ -84,21 +103,27 @@ Firestore.createData = async (collectionName, data) => {
   }
 }
 
-Firestore.fetchDocById = async (collectionName, docId) => {
+Firestore.update = async (collectionName, docId, newData) => {
   try {
     const docRef = doc(db, collectionName, docId);
-    const docSnapshot = await getDoc(docRef);
-
-    if (docSnapshot.exists()) {
-      const data = {
-        uid: docSnapshot.id,
-        ...docSnapshot.data(),
-      };
-      return data;
-    } else {
-      return "Usuário não encontrado.";
+    const docSnap = await getDoc(docRef);
+    const data = docSnap.data();
+    for (const key in newData) {
+      if (newData.hasOwnProperty(key)) {
+        data[key] = newData[key];
+      }
     }
+    await setDoc(docRef, data);
   } catch (error) {
     return firebaseErrorMessage[error.message];
+  }
+}
+
+Firestore.delete = async (collectionName, docId) => {
+  try {
+    const docRef = doc(db, collectionName, docId);
+    await deleteDoc(docRef);
+  } catch (error) {
+    return firebaseErrorMessage[error.message] || error.message;
   }
 }

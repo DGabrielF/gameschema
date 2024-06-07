@@ -72,6 +72,9 @@
 
 
 .card>.image {
+  width: 14vw;
+  height: 14vw;
+
   border: 1px solid #646464;
   border-radius: 5px;
   background: linear-gradient(90deg, #ffffff70, #ffffff90, #ffffff70);
@@ -81,8 +84,8 @@
   justify-content: center;
 }
 .card>.image>img {
-  width: 14.723vw;
-  height: 14.723vw;
+  width: 95%;
+  height: 95%;
 }
 
 .card>.attributes {

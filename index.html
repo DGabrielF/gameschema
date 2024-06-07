@@ -36,8 +36,6 @@
     </div>
   </header>
   <main>
-
-    <div id="card"></div>
     <div class="fade hide"></div>
 
     <div class="toast hide">
@@ -100,6 +98,103 @@
               <div class="wrap_input">
                 <span class="placeholder hide">Valor</span>
                 <input class="price" type="text" placeholder="Valor">
+              </div>
+              <button>criar oferta</button>
+            </div>
+            <div class="detail"></div>
+          </div>
+          <div class="separator_horizontal"></div>
+          <div class="search_area">
+            <span>BUSCAR</span>
+            <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
+            <input type="search" name="" id="">
+          </div>
+          <div class="separator_horizontal"></div>
+          <div class="offer_filter">
+            <div class="filter">
+              <span>Ordenar por</span>
+              <div class="filter_types">
+                <span class="selected_filter">selecionado</span>
+                <div class="filter_options"></div>
+              </div>
+              <div class="order_types">
+                <span class="selected_order"></span>
+                <img src="" alt="" class="selected_image">
+              </div>
+            </div>
+            <div class="money_area">
+              <p>Você tem P$</p>
+              <span class="money">10000</span>
+            </div>
+          </div>
+          <div class="separator_horizontal"></div>
+          <div class="offer_list"></div>
+        </div>
+        <div class="sell market_type hide">
+          <h2>Venda cartas para outros jogadores</h2>
+          <div class="separator_horizontal"></div>
+          <div class="create_buy_offer">
+            <div class="input_area">
+              <h3>Criar oferta de venda</h3>
+              <div class="wrap_input">
+                <span class="placeholder hide">Nome ou ID</span>
+                <input class="card_id" type="text" placeholder="Nome ou ID">
+              </div>
+              <div class="wrap_input">
+                <span class="placeholder hide">Valor</span>
+                <input class="price" type="text" placeholder="Valor">
+              </div>
+              <button>criar oferta</button>
+            </div>
+            <div class="detail"></div>
+          </div>
+          <div class="separator_horizontal"></div>
+          <div class="search_area">
+            <span>BUSCAR</span>
+            <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
+            <input type="search" name="" id="">
+          </div>
+          <div class="separator_horizontal"></div>
+          <div class="offer_filter">
+            <div class="filter">
+              <span>Ordenar por</span>
+              <div class="filter_types">
+                <span class="selected_filter">selecionado</span>
+                <div class="filter_options"></div>
+              </div>
+              <div class="order_types">
+                <span class="selected_order"></span>
+                <img src="" alt="" class="selected_image">
+              </div>
+            </div>
+            <div class="money_area">
+              <p>Você tem P$</p>
+              <span class="money">10000</span>
+            </div>
+          </div>
+          <div class="separator_horizontal"></div>
+          <div class="offer_list"></div>
+        </div>
+        <div class="trade market_type hide">
+          <h2>Troque cartas com outros jogadores</h2>
+          <div class="separator_horizontal"></div>
+          <div class="create_buy_offer">
+            <div class="detail"></div>
+            <div class="input_area">
+              <h3>Criar oferta de troca</h3>
+              
+              <div class="wrap_input">
+                <span class="placeholder hide">Nome ou ID da carta oferecida</span>
+                <input class="card_id desired" type="text" placeholder="Nome ou ID da carta oferecida">
+              </div>
+              <div class="wrap_input">
+                <span class="placeholder hide">Quantidade</span>
+                <input class="quantity" type="text" placeholder="Quantidade">
+              </div>
+              <button>Adicionar outra carta</button>
+              <div class="wrap_input">
+                <span class="placeholder hide">Nome ou ID da carta desejada</span>
+                <input class="card_id offered" type="text" placeholder="Nome ou ID da carta desejada">
               </div>
               <button>criar oferta</button>
             </div>
@@ -469,6 +564,26 @@
         <h2>Confirmar Compra</h2>
         <div class="separator_horizontal"></div>
         <p>Você deseja realmente comprar o pacote <span class="name"></span> com <span class="quantity"></span> por <span class="price"></span>?</p>
+        <div class="separator_horizontal"></div>
+        <div class="button_area">
+          <button class="confirm">sim</button>
+          <button class="deny">não</button>
+        </div>
+      </div>
+      <div class="buy hide">
+        <h2>Confirmar Compra</h2>
+        <div class="separator_horizontal"></div>
+        <p>Você deseja realmente comprar a carta <span class="name"></span> por <span class="price"></span>?</p>
+        <div class="separator_horizontal"></div>
+        <div class="button_area">
+          <button class="confirm">sim</button>
+          <button class="deny">não</button>
+        </div>
+      </div>
+      <div class="sell hide">
+        <h2>Confirmar Venda</h2>
+        <div class="separator_horizontal"></div>
+        <p>Você deseja realmente vender a carta <span class="name"></span> por <span class="price"></span>?</p>
         <div class="separator_horizontal"></div>
         <div class="button_area">
           <button class="confirm">sim</button>
