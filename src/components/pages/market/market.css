@@ -70,12 +70,14 @@
   width: 100%;
 }
 
+.create_sell_offer,
 .create_buy_offer {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
 }
+.create_sell_offer .detail,
 .create_buy_offer .detail {
   min-width: 16vw;
   width: 16vw;

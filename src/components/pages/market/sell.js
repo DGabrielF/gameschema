@@ -1,55 +1,53 @@
 import { State } from "../../../scripts/engine/state.js";
 import { Firestore } from "../../../scripts/services/firebase/firestore.js";
-import { Card } from "../../shared/card/card.js";
-import { Dialog } from "../../shared/dialog/dialog.js";
 import { Toast } from "../../shared/toast/toast.js";
 import { Market } from "./market.js";
 
-export const Buy = {
-  self: document.querySelector("section.market .buy"),
-  databaseName: "buy",
+export const Sell = {
+  self: document.querySelector("section.market .sell"),
+  databaseName: "sell",
   data: null,
   dataLimit: 10,
   lastDoc: null,
   totalCount: null,
   newOfferCard: null,
   selectedOffer: null,
-  confirmButton: document.querySelector(".dialog .buy .confirm"),
+  confirmButton: document.querySelector(".dialog .sell .confirm"),
   load: () => {},
   list: async () => {},
   dialogUpdate: () => {},
   confirm: () => {},
 };
 
-Buy.load = async () => {
-  if (!Buy.data) {
-    await Market.subsectionDataUpdate(Buy);
+Sell.load = async () => {
+  if (!Sell.data) {
+    await Market.subsectionDataUpdate(Sell)
   };
 
-  const createOfferArea = Buy.self.querySelector(".create_buy_offer");
+  const createOfferArea = Sell.self.querySelector(".create_sell_offer");
   const searchID = createOfferArea.querySelector(".card_id");
   searchID.addEventListener("blur", async () => {
-    Buy.newOfferCard = await Market.addCardToOfferDetail(searchID, createOfferArea);
+    Sell.newOfferCard = await Market.addCardToOfferDetail(searchID, createOfferArea);
   });
   const createButton = createOfferArea.querySelector("button");
   createButton.addEventListener("click", newOffer);
 
-  await Buy.list();
+  await Sell.list();
 
   Market.attachEventAtOfferButtons();
 
-  Buy.confirmButton.addEventListener("click", Buy.confirm);
+  Sell.confirmButton.addEventListener("click", Sell.confirm);
 };
 
-Buy.list = async () => {
-  const offerList = Buy.self.querySelector(".offer_list");
+Sell.list = async () => {
+  const offerList = Sell.self.querySelector(".offer_list");
 
-  if (Buy.data.length > 0) {
-    for (const offer of Buy.data) {
+  if (Sell.data.length > 0) {
+    for (const offer of Sell.data.sort((a, b) => a.quantity - b.quantity)) {
       const foundElement = document.getElementById(offer.id);
       if (foundElement) return;
 
-      const ownerData = await Firestore.fetchDocById("Users", offer.owner);
+      const ownerData = await Firestore.fetchDocById ("Users", offer.owner);
       const div = document.createElement("div");
       div.classList.add("offer");
       div.id = offer.id;
@@ -59,7 +57,7 @@ Buy.list = async () => {
       const month = ("0" + (date.getUTCMonth() + 1)).slice(-2);
       const year = date.getUTCFullYear().toString().slice(-2);
       const formattedDate = `${day}/${month}/${year}`;
-      
+
       const offetContent = `
       <span class="name">${ownerData.name}</span>
       <span class="card_name">${offer.card}</span>
@@ -75,31 +73,31 @@ Buy.list = async () => {
   }
 };
 
-Buy.dialogUpdate = (offer) => {
-  Buy.selectedOffer = offer;
+Sell.dialogUpdate = (offer) => {
+  Sell.selectedOffer = offer;
 
-  const name = document.querySelector(".dialog .buy .name");
+  const name = document.querySelector(".dialog .sell .name");
   name.textContent = offer.name;
 
-  const price = document.querySelector(".dialog .buy .price");
+  const price = document.querySelector(".dialog .sell .price");
   price.textContent = offer.price;
 };
 
-Buy.confirm = async () => {
-  const offer = Buy.selectedOffer;
+Sell.confirm = async () => {
+  const offer = Sell.selectedOffer;
 
-  if (!Market.coinVerification(State.user.coins, offer.price)) return;
-
-  State.user.coins -= offer.price;
+  State.user.coins += offer.price;
   const cardRollback = [...State.user.cards.all];
 
-  Dialog.handle("purchased_cards");
-  const pokeCard = await Card.create(offer.cardId);
-  const purchasedCardsArea = document.querySelector(".dialog .purchased_cards_area");
-  purchasedCardsArea.innerHTML = "";
-  purchasedCardsArea.appendChild(pokeCard);
+  const foundCard = Market.cardVerification(offer, State.user.cards.all);
+  if (!foundCard) {
+    const message = `Você não possui esta carta`;
+    Toast.open("Erro", message, Toast.error);
+    return;
+  };
 
-  Market.addCardToPlayer(pokeCard, State.user.cards.all);
+  foundCard.quantity -= 1;
+  Market.removeCardFromPlayer(foundCard, State.user.cards)
 
   const newData = {
     coins: State.user.coins,
@@ -108,26 +106,27 @@ Buy.confirm = async () => {
   const response = await Firestore.update("Users", State.user.uid, newData);
   if (response) {
     Toast.open("Erro", response, Toast.error);
-    State.user.coins += price;
+    State.user.coins -= price;
     State.user.cards.all = [...cardRollback];
     return;
   };
   const ownerData = await Firestore.fetchDocById("Users", offer.owner);
+  Market.addCardToPlayer(foundCard, ownerData.cards.all);
   const newOwnerData = {
-    coins: ownerData.coins + offer.price
+    cards: ownerData.cards
   }
   const ownerResponse = await Firestore.update("Users", ownerData.uid, newOwnerData);
   if (ownerResponse) {
     Toast.open("Erro", response, Toast.error);
-    State.user.coins += price;
+    State.user.coins -= price;
     State.user.cards.all = [...cardRollback];
     return;
   };
 
-  const removeResponse = await Firestore.delete("buy", offer.id);
+  const removeResponse = await Firestore.delete("sell", offer.id);
   if (removeResponse) {
     Toast.open("Erro", removeResponse, Toast.error);
-    State.user.coins += price;
+    State.user.coins -= price;
     State.user.cards.all = [...cardRollback];
     return;
   };
@@ -139,11 +138,11 @@ Buy.confirm = async () => {
 };
 
 async function newOffer () {
-  const createOfferArea = Buy.self.querySelector(".create_buy_offer");
-
+  const createOfferArea = Sell.self.querySelector(".create_sell_offer");
+  
   if (!Market.authVerification(State.user.uid)) return;
 
-  if (!Buy.newOfferCard) {
+  if (!Sell.newOfferCard) {
     const message = `É necessário selecionar uma carta para criar uma oferta`;
     Toast.open("Erro", message, Toast.error);
     return;
@@ -155,29 +154,37 @@ async function newOffer () {
     const message = `Só é possível utilizar valores maiores que zero`;
     Toast.open("Erro", message, Toast.error);
     return;
-  } 
-  if (!Market.coinVerification(State.user.coins, price)) return;
-  State.user.coins -= price;
+  }
+
+  const foundCard = Market.cardVerification(Sell.newOfferCard, State.user.cards);
+  if (!foundCard) {
+    const message = `Você não possui esta carta`;
+    Toast.open("Erro", message, Toast.error);
+    return;
+  };
+  
+  foundCard.quantity -= 1;
+  Market.removeCardFromPlayer(foundCard, State.user.cards)
 
   const newData = {
-    coins: State.user.coins,
+    cards: State.user.cards,
   };
   const userResponse = await Firestore.update("Users", State.user.uid, newData);
   Market.update();
   if (userResponse) {
     Toast.open("Erro", userResponse, Toast.error);
-    State.user.coins += price;
+    Market.addCardToPlayer(foundCard, State.user.cards.all)
     return;
   };
   
   const data = {
     owner: State.user.uid,
-    card: Buy.newOfferCard.name,
-    cardId: Buy.newOfferCard.id,
+    card: Sell.newOfferCard.name,
+    cardId: Sell.newOfferCard.id,
     price: price,
     date: new Date().toISOString(),
   };
-  const offerResponse = await Firestore.createData("sell", data);
+  const offerResponse = await Firestore.createData("buy", data);
   if (typeof offerResponse === "string") {
     Toast.open("Erro", offerResponse, Toast.error);
     State.user.coins += price;

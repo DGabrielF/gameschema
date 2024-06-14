@@ -1,4 +1,4 @@
-import { getFirestore, doc, addDoc, getDoc, getDocs, setDoc, deleteDoc, collection, query, limit, startAfter } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, addDoc, getDoc, getDocs, setDoc, deleteDoc, collection, query, limit, startAfter, updateDoc, arrayUnion } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 import { app } from './app.js';
 import { firebaseErrorMessage } from './errors.js';
@@ -123,6 +123,30 @@ Firestore.delete = async (collectionName, docId) => {
   try {
     const docRef = doc(db, collectionName, docId);
     await deleteDoc(docRef);
+  } catch (error) {
+    return firebaseErrorMessage[error.message] || error.message;
+  }
+}
+
+Firestore.addObjectToList = async (collectionName, docId, mapField, arrayField, newObject) => {
+  const docRef = doc(db, collectionName, docId);
+
+  try {
+    await docRef.update({
+      [`${mapField}.${arrayField}`]: arrayUnion(newObject)
+    })
+  } catch (error) {
+    return firebaseErrorMessage[error.message] || error.message;
+  }
+}
+
+Firestore.removeObjectFromList = async (docPath, arrayField, objectToRemove) => {
+  const docRef = doc(docPath);
+
+  try {
+    await updateDoc(docRef, {
+      [arrayField]: arrayRemove(objectToRemove)
+    });
   } catch (error) {
     return firebaseErrorMessage[error.message] || error.message;
   }
