@@ -8,6 +8,7 @@ import { Toast } from "../../shared/toast/toast.js";
 import { Buy } from "./buy.js";
 import { Package } from "./package.js";
 import { Sell } from "./sell.js";
+import { Trade } from "./trade.js";
 
 export const Market = {
   self: document.querySelector("section.market"),
@@ -16,9 +17,9 @@ export const Market = {
     package: null,
     buy: null,
     sell: null,
-    trade: [],
+    trade: null,
   },
-  load: () => {},
+  load: async () => {},
   toggleDialog: () => {},
   dialogUpdate: () => {},
   toggleDisplay: () => {},
@@ -36,6 +37,9 @@ Market.load = async () => {
   if (!Market.subSections.sell) {
     Market.subSections.sell = Sell;
   };
+  if (!Market.subSections.trade) {
+    Market.subSections.trade = Trade;
+  };
   const marketContent = Market.self.querySelector(".market_content");
   const marketSections = marketContent.querySelectorAll('.market_type');
   for (const marketSection of marketSections) {
@@ -47,8 +51,7 @@ Market.load = async () => {
       }
     }
   };
-  Market.attachEventAtOfferButtons();
-  
+  Market.attachEventAtOfferButtons();  
 };
 
 Market.subsectionDataUpdate = async (subsectionObject) => {

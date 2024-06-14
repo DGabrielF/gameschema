@@ -87,10 +87,20 @@ section {
   gap: 5px;
 }
 
-
 .separator_horizontal{
   height: 3px;
   width: 100%;
 
   background-color: #ababab;
+}
+
+[class*="cards_area"] {
+  width: 97vw;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3vw;
 }

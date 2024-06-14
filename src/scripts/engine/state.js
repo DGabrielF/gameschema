@@ -1,3 +1,4 @@
+import { Cards } from "../../components/pages/cards/cards.js";
 import { Market } from "../../components/pages/market/market.js";
 import { TopMenu } from "../../components/shared/top_menu/top_menu.js";
 
@@ -16,6 +17,12 @@ export const State = {
           {id: 12, quantity: 1},
           {id: 16, quantity: 1},
           {id: 25, quantity: 1},
+          {id: 35, quantity: 1},
+          {id: 45, quantity: 1},
+          {id: 55, quantity: 1},
+          {id: 65, quantity: 1},
+          {id: 75, quantity: 1},
+          {id: 85, quantity: 1},
         ],
         hand: [1, 4, 7, 12, 16, 25],
       },
@@ -53,5 +60,6 @@ State.userUpdate = async (user) => {
   }
   TopMenu.update();
   Market.update();
+  await Cards.update();
 }
 

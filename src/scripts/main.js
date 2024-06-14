@@ -11,6 +11,7 @@ import { Fade } from "../components/shared/fade/fade.js";
 import { SideMenu } from "../components/shared/side_menu/side_menu.js";
 import { Market } from "../components/pages/market/market.js";
 import { Dialog } from "../components/shared/dialog/dialog.js";
+import { Cards } from "../components/pages/cards/cards.js";
 
 async function init() {
   State.userUpdate();
@@ -23,6 +24,7 @@ async function init() {
   await SignUp.load();
   await SignOut.load();
   await Market.load();
+  await Cards.load();
 
   // Footer
   attachEventsOnFooterIcons();
