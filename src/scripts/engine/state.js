@@ -24,7 +24,14 @@ export const State = {
           {id: 75, quantity: 1},
           {id: 85, quantity: 1},
         ],
-        hand: [1, 4, 7, 12, 16, 25],
+        hand: [
+          {id: 1},
+          {id: 4},
+          {id: 7},
+          {id: 12},
+          {id: 16},
+          {id: 25}
+        ],
       },
       relationship: {
         friends: [],

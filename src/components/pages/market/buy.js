@@ -1,4 +1,5 @@
 import { State } from "../../../scripts/engine/state.js";
+import { PokeApi } from "../../../scripts/services/api.js";
 import { Firestore } from "../../../scripts/services/firebase/firestore.js";
 import { Card } from "../../shared/card/card.js";
 import { Dialog } from "../../shared/dialog/dialog.js";
@@ -94,7 +95,9 @@ Buy.confirm = async () => {
   const cardRollback = [...State.user.cards.all];
 
   Dialog.handle("purchased_cards");
-  const pokeCard = await Card.create(offer.cardId);
+  const pokeData = await PokeApi.getPokemon(offer.cardId);
+  const pokeUsefulData = PokeApi.getUsefulAttributes(pokeData);
+  const pokeCard = Card.create(pokeUsefulData);
   const purchasedCardsArea = document.querySelector(".dialog .purchased_cards_area");
   purchasedCardsArea.innerHTML = "";
   purchasedCardsArea.appendChild(pokeCard);

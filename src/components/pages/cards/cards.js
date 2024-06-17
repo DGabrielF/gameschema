@@ -1,4 +1,5 @@
 import { State } from "../../../scripts/engine/state.js";
+import { PokeApi } from "../../../scripts/services/api.js";
 import { Card } from "../../shared/card/card.js";
 
 export const Cards = {
@@ -8,8 +9,12 @@ export const Cards = {
     target: null,
     presented: null,
     hand: null,
-  },  
+  },
   presentedCards: [],
+  search: {
+    input: document.querySelector("section.cards .search_area input"),
+    result: []
+  },
   load: async () => {},
   update: async () => {}
 };
@@ -23,28 +28,59 @@ Cards.load = async () => {
   Cards.area.hand.addEventListener('dragover', dragOver);
   Cards.area.hand.addEventListener('drop', drop);
 
+  Cards.search.input.addEventListener("input", searchCard)
+
   await Cards.update();
 };
 
 Cards.update = async  () => {
   // if (!State.user.uid) return;
 
-  Cards.presentedCards = State.user.cards.all.filter(card => !State.user.cards.hand.includes(card.id));
+  Cards.presentedCards = State.user.cards.all.filter(card => !State.user.cards.hand.some(handCard => handCard.id === card.id));
   
   if (!Cards.area.presented) return;
   if (!Cards.area.hand) return;
 
   Cards.area.presented.innerHTML = "";
-  for (const card of Cards.presentedCards) {
-    const cardDiv = await Card.create(card);
+  console.log("Fazendo update");
+  console.log("State.user.cards.hand", State.user.cards.hand);
+  console.log("Cards.search.result", Cards.search.result);
+  console.log("Cards.presentedCards", Cards.presentedCards);
+  const showCards = Cards.search.result.length > 0 ? Cards.search.result : Cards.presentedCards;
+  for (const card of showCards) {
+    let cardData= card;
+    if (!card.name) {
+      cardData = await PokeApi.getPokemon(card.id);
+      cardData = PokeApi.getUsefulAttributes(cardData);
+      const foundInAllCards = State.user.cards.all.find(poke => poke.id === cardData.id)
+      if (foundInAllCards) {
+        for (let key in cardData) {
+          foundInAllCards[key] = cardData[key];
+        }
+      }
+    }
+
+    const cardDiv = Card.create(cardData);
     cardDiv.draggable = true;
     cardDiv.addEventListener("dragstart", dragStart);
     cardDiv.addEventListener("dblclick", doubleClick);
     Cards.area.presented.appendChild(cardDiv);
   }
 
+  Cards.area.hand.innerHTML = "";
   for (const card of State.user.cards.hand) {
-    const cardDiv = await Card.create(card);
+    let cardData= card;
+    if (!card.name) {
+      cardData = await PokeApi.getPokemon(card.id);
+      cardData = PokeApi.getUsefulAttributes(cardData);
+      const foundInAllCards = State.user.cards.hand.find(poke => poke.id === cardData.id)
+      if (foundInAllCards) {
+        for (let key in cardData) {
+          foundInAllCards[key] = cardData[key];
+        }
+      }
+    }
+    const cardDiv = Card.create(card);
     cardDiv.draggable = true;
     cardDiv.addEventListener("dragstart", dragStart);
     cardDiv.addEventListener("dblclick", doubleClick);
@@ -110,4 +146,13 @@ function toggleCard(id) {
   };
 
   return false;
+}
+
+function searchCard() {
+  const searched = Cards.search.input.value;
+  Cards.search.result = searched ? Cards.presentedCards.filter(card => 
+    card.name.toLowerCase().includes(searched.toLowerCase())
+  ) : [];
+
+  Cards.update();
 }

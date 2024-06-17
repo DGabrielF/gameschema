@@ -6,6 +6,7 @@
 @import url("../components/shared/float/float.css");
 @import url("../components/shared/fade/fade.css");
 @import url("../components/shared/side_menu/side_menu.css");
+@import url("../components/shared/search/search.css");
 
 @import url("../components/shared/top_menu/top_menu.css");
 @import url("../components/shared/footer/footer.css");
@@ -52,6 +53,7 @@ body::after {
 
 main {
   height: 100vh;
+  overflow: hidden;
 }
 
 section {
@@ -68,14 +70,6 @@ section {
   height: 23px;
 
   cursor: pointer;
-}
-
-.search_area {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
 .page_menu {
@@ -95,7 +89,11 @@ section {
 }
 
 [class*="cards_area"] {
+  padding: 10px 10px;
   width: 97vw;
+
+  background-color: #e8e8e8;
+  border-radius: 15px;
 
   display: flex;
   flex-direction: row;

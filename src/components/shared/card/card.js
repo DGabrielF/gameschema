@@ -1,17 +1,15 @@
-import { PokeApi } from "../../../scripts/services/api.js";
 import { cardColors } from "./type.js";
 
 export const Card = {
-  create: async () => {},
+  create: () => {},
 };
 
-Card.create = async (cardId) => {
-  Card.id = (typeof cardId === "number") ? cardId : cardId.id;
-  const pokeData = await PokeApi.getPokemon(Card.id);
-  getPokeAttributesFromData(pokeData);
+Card.create = (pokeData) => {
   const div = document.createElement("div");
   div.id = Card.id;
   div.classList.add("card");
+
+  getPokeAttributesFromData(pokeData)
 
   const typesString = typesStringGenerator(Card.types);
   addClassTypes(div, Card.types);
@@ -66,11 +64,11 @@ function getPokeAttributesFromData (pokeData) {
   Card.types = pokeData.types;
   Card.height = pokeData.height;
   Card.weight = pokeData.weight;
-  Card.image = pokeData.sprites.other.dream_world.front_default ? pokeData.sprites.other.dream_world.front_default : pokeData.sprites.front_default;
-  Card.health = pokeData.stats.find((item) => item.stat.name === "hp").base_stat || 0;
-  Card.speed = pokeData.stats.find((item) => item.stat.name === "speed").base_stat || 0;
-  Card.attack = pokeData.stats.find((item) => item.stat.name === "attack").base_stat || 0;
-  Card.defense = pokeData.stats.find((item) => item.stat.name === "defense").base_stat || 0;
+  Card.image = pokeData.image;
+  Card.health = pokeData.health;
+  Card.speed = pokeData.speed;
+  Card.attack = pokeData.attack;
+  Card.defense = pokeData.defense;
 }
 
 function typesStringGenerator(types) {

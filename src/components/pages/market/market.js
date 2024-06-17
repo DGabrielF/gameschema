@@ -127,7 +127,9 @@ Market.addCardToOfferDetail = async (searchID, createOfferArea) => {
     return;
   };
 
-  const card = await Card.create(cardData.id);
+  const pokeData = await PokeApi.getPokemon(cardData.id);
+  const pokeUsefulData = PokeApi.getUsefulAttributes(pokeData);
+  const card = Card.create(pokeUsefulData);
   const detail = createOfferArea.querySelector(".detail");
   detail.innerHTML = "";
   detail.appendChild(card);

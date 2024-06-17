@@ -117,7 +117,7 @@ async function openPackage(quantity) {
     };
     State.user.luck = (State.user.luck - pokeData.base_experience) / 2 > 0 ? (State.user.luck - pokeData.base_experience) / 2 : 0;
     purchasedCards.push(pokeData);
-    const pokeCard = await Card.create(drawedID);
+    const pokeCard = await Card.create(pokeData);
     purchasedCardsArea.appendChild(pokeCard);  
   }
   return purchasedCards;

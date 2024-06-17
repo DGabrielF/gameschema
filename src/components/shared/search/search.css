@@ -1,0 +1,10 @@
+.search_area {
+  padding: 5px 10px;
+  width: 97%;
+
+  background-color: #ababab;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
