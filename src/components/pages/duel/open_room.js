@@ -25,7 +25,6 @@ OpenRoom.load = async () => {
   privateCheckBox.addEventListener("change", togglePrivateRoom)
 
   const confirmButton = OpenRoom.self.querySelector("button.confirm");
-  console.log(confirmButton)
   confirmButton.addEventListener("click", createRoom);
 }
 

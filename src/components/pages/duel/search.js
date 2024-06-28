@@ -42,7 +42,6 @@ SearchDuel.subsectionDataUpdate = async (subsectionObject) => {
 
 SearchDuel.fetchDataSubsecion = async (classItem) => {
   SearchDuel.selectedSubSection = classItem;
-  console.log(SearchDuel.subSections)
   let { data, lastDoc } = await Firestore.fetchLimitedDataFromFirebase(classItem, 6, SearchDuel.subSections[classItem].lastDoc);
   if (!SearchDuel.subSections[classItem].data) {
     SearchDuel.subSections[classItem].data = data;
@@ -51,7 +50,7 @@ SearchDuel.fetchDataSubsecion = async (classItem) => {
     SearchDuel.subSections[classItem].lastDoc = lastDoc;
   }
 
-  SearchDuel.subSections[SearchDuel.selectedSubSection].load();
+  await SearchDuel.subSections[SearchDuel.selectedSubSection].load();
   SearchDuel.attachEventAtEnemyButtons();
 }
 
