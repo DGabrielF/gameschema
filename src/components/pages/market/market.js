@@ -21,7 +21,6 @@ export const Market = {
   },
   load: async () => {},
   toggleDialog: () => {},
-  dialogUpdate: () => {},
   toggleDisplay: () => {},
   updateDisplay: () => {},
   attachEventAtOfferButtons: () => {},

@@ -15,7 +15,9 @@
 @import url("../components/pages/market/package.css");
 @import url("../components/pages/cards/cards.css");
 @import url("../components/pages/pokedex/pokedex.css");
-@import url("../components/pages/duel/search_duel.css");
+@import url("../components/pages/duel/search.css");
+@import url("../components/pages/duel/open_room.css");
+@import url("../components/pages/duel/duel.css");
 @import url("../components/pages/ranking/ranking.css");
 
 @import url("../components/pages/profile/profile.css");

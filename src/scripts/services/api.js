@@ -19,6 +19,7 @@ PokeApi.getPokemon = async (idOrName) => {
 };
 
 PokeApi.getUsefulAttributes = (pokeData) => {
+  if (typeof pokeData === "string") return
   const usefulAttributes = {};
   usefulAttributes.id = pokeData.id;
   usefulAttributes.name = pokeData.name;

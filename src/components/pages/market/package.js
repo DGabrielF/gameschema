@@ -16,7 +16,7 @@ export const Package = {
   selectedOffer: null,
   confirmButton: document.querySelector(".dialog .package .confirm"),
   lastCardId: 1025,
-  load: () => {},
+  load: async () => {},
   list: () => {},
   dialogUpdate: () => {},
   confirm: () => {},
@@ -44,7 +44,7 @@ Package.list = () => {
         const div = document.createElement("div");
         div.classList.add("offer");
         div.id = offer.id;
-        const offetContent = `
+        const offerContent = `
           <span class="name">${offer.name}</span>
           <span class="quantity">${offer.quantity} carta${offer.quantity>1?"s":""}</span>
           <button>
@@ -52,7 +52,7 @@ Package.list = () => {
             <span class="price">${offer.quantity * 200 * (1 - offer.off)}</span>
           </button>
         `
-        div.innerHTML = offetContent;
+        div.innerHTML = offerContent;
         offerList.appendChild(div);
       }
     }

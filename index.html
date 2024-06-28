@@ -16,7 +16,7 @@
           <button id="market" class="navigation">mercado</button>
           <button id="cards" class="navigation">cartas</button>
           <button id="pokedex" class="navigation">pokédex</button>
-          <button id="duel" class="navigation">duelar</button>
+          <button id="search_duel" class="navigation">duelar</button>
           <button id="ranking" class="navigation">classificação</button>
         </nav>
       </div>
@@ -230,7 +230,7 @@
       </div>
     </section>
 
-    <section class="cards">
+    <section class="cards hide">
       <span>Suas Cartas</span>
       <div class="search_area">
         <span>BUSCAR</span>
@@ -267,7 +267,7 @@
       </div>
     </section>
 
-    <section class="search_duel hide">
+    <section class="search_duel">
       <div class="side_menu">
         <div class="side_menu_content">
           <h1>DUELAR</h1>
@@ -282,13 +282,52 @@
           <img class="icon left" src="./src/assets/icons/general/caret.svg" alt="">
         </button>
       </div>
-      <div class="search_battle_content">
-        <div class="search_area">
+      <div class="search_duel_content">
+        <div class="npc_enemy search_duel_type hide">
+          <h2>Lista de Adversários (NPC)</h2>
+          <div class="separator_horizontal"></div>
+          <img class="update icon" src="./src/assets/icons/general/refresh.svg" alt="Atualizar">          
+          <ul class="dueller_list"></ul>
+        </div>
+        <div class="player_ranking search_duel_type hide">
+          <h2>Adversários próximos à sua Classificação</h2>
+          <button class="update">atualizar</button>
+          <div class="dueller_list"></div>
+        </div>
+        <div class="enter_room search_duel_type hide">
+          <h2>Procure uma sala para duelar</h2>
+          <div class="dueller_list"></div>
+          <div class="page_menu"></div>
+        </div>
+        <div class="open_room search_duel_type">
+          <h2>Crie uma sala e aguarde por um desafiante</h2>
+          <div class="separator_horizontal"></div>
+          <div class="create_room">
+            <div class="room_name_input wrap_input">
+              <span class="placeholder hide">Nome da Sala</span>
+              <input type="text" placeholder="Nome da Sala">
+            </div>
+            <div class="private_input">
+              <span>privada</span>
+              <input type="checkbox">
+            </div>
+            <div class="password_input hide">
+              <span class="placeholder hide">Definir Senha</span>
+              <input type="password" placeholder="Definir Senha">
+            </div>
+            <div class="separator_horizontal"></div>
+            <div class="button_area">
+              <button class="confirm text">confirmar</button>
+              <button class="clean text">limpar</button>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="search_area">
           <span>BUSCAR</span>
           <img class="icon" src="./src/assets/icons/general/search.svg" alt="">
           <input type="search" name="" id="">
-        </div>
-        <div class="duellers_list">
+        </div> -->
+        <!-- <div class="duellers_list">
           <h2></h2>
           <ul>
             <li id="chavedoadversario">
@@ -303,8 +342,8 @@
               </button>
             </li>
           </ul>
-        </div>
-        <div class="rooms_list">
+        </div> -->
+        <!-- <div class="rooms_list">
           <h2></h2>
           <ul>
             <li id="chavedasala">
@@ -315,25 +354,20 @@
               </button>
             </li>
           </ul>
-        </div>
-        <div class="create_room">
-          privada
-          <input type="checkbox">
-          <div class="password_input">
-            <span>definir senha</span>
-            <input type="password">
-          </div>
-          <div class="button_area">
-            <button class="confirm text">confirmar</button>
-            <button class="cancel text">cancelar</button>
-          </div>
-        </div>
+        </div> -->
       </div>
 
-      <div id="duel">
-        <div class="opponent_cards"></div>
+      <div id="duel_page" class="hide">
+        <div class="opponent_cards">
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+        </div>
         <div class="duel_area">
-          <div class="opponent_card_slot"></div>
+          <div class="opponent_slot card"></div>
           <div class="duel_info">
             <div class="round_timer"></div>
             <div class="scoreboard">
@@ -346,17 +380,26 @@
             <div class="selected_attibute"></div>
             <button id="start_turn text">Vai</button>
           </div>
-          <div class="player_card_slot"></div>
+          <div class="player_slot card"></div>
         </div>
-        <div class="select_attribute">
-          <img src="./src/assets/icons/card/height.svg" alt="" class="icon">
-          <img src="./src/assets/icons/card/weight.svg" alt="" class="icon">
-          <img src="./src/assets/icons/card/health.svg" alt="" class="icon">
-          <img src="./src/assets/icons/card/speed.svg" alt="" class="icon">
-          <img src="./src/assets/icons/card/attack.svg" alt="" class="icon">
-          <img src="./src/assets/icons/card/defense.svg" alt="" class="icon">
+        
+        <div class="player_cards">
+          <div class="select_attribute">
+            <img src="./src/assets/icons/card/height.svg" alt="" class="icon">
+            <img src="./src/assets/icons/card/weight.svg" alt="" class="icon">
+            <img src="./src/assets/icons/card/health.svg" alt="" class="icon">
+            <img src="./src/assets/icons/card/speed.svg" alt="" class="icon">
+            <img src="./src/assets/icons/card/attack.svg" alt="" class="icon">
+            <img src="./src/assets/icons/card/defense.svg" alt="" class="icon">
+            <button>confirmar</button>
+          </div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
         </div>
-        <div class="player_cards"></div>
       </div>
     </section>
 

@@ -12,6 +12,7 @@ import { SideMenu } from "../components/shared/side_menu/side_menu.js";
 import { Market } from "../components/pages/market/market.js";
 import { Dialog } from "../components/shared/dialog/dialog.js";
 import { Cards } from "../components/pages/cards/cards.js";
+import { SearchDuel } from "../components/pages/duel/search.js";
 
 async function init() {
   State.userUpdate();
@@ -25,6 +26,7 @@ async function init() {
   await SignOut.load();
   await Market.load();
   await Cards.load();
+  await SearchDuel.load();
 
   // Footer
   attachEventsOnFooterIcons();

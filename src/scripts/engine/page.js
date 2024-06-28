@@ -1,3 +1,4 @@
+import { SearchDuel } from "../../components/pages/duel/search.js";
 import { Market } from "../../components/pages/market/market.js";
 import { Dialog } from "../../components/shared/dialog/dialog.js";
 import { Fade } from "../../components/shared/fade/fade.js";
@@ -35,7 +36,7 @@ export const Page = {
         selected: false,
         float: false,
       },
-      duel: {
+      search_duel: {
         menu: "list",
         online: true,
         offline: false,
@@ -102,7 +103,7 @@ export const Page = {
   },
   content: {
     float: ["signin", "signup", "settings", "signout"],
-    fixed: ["market", "cards", "pokedex", "duel", "ranking", "profile", "account", "relatioinship"]    
+    fixed: ["market", "cards", "pokedex", "search_duel", "ranking", "profile", "account", "relatioinship"]    
   },
   change: () => {},
   getSelectedMenuItems: () => {},
@@ -176,6 +177,7 @@ function showSection(page) {
 
 Page.showContent = (content, parentSection) => {
   const contentArea = parentSection.querySelector(`[class*='${parentSection.classList[0]}_content']`);
+
   const subsecions = contentArea.querySelectorAll(":scope > *")
   for (const subsecion of subsecions) {
     if (subsecion.classList.contains(content)) {
@@ -184,5 +186,12 @@ Page.showContent = (content, parentSection) => {
       subsecion.classList.add("hide");
     }
   }
-  Market.fetchDataSubsecion(content);
+
+  if (parentSection.classList[0] === "market") {
+    Market.fetchDataSubsecion(content);
+  }
+  
+  if (parentSection.classList[0] === "search_duel") {
+    SearchDuel.fetchDataSubsecion(content);
+  }
 }
