@@ -33,7 +33,7 @@ Cards.load = async () => {
   await Cards.update();
 };
 
-Cards.update = async  () => {
+Cards.update = async () => {
   // if (!State.user.uid) return;
 
   Cards.presentedCards = State.user.cards.all.filter(card => !State.user.cards.hand.some(handCard => handCard.id === card.id));
@@ -42,13 +42,10 @@ Cards.update = async  () => {
   if (!Cards.area.hand) return;
 
   Cards.area.presented.innerHTML = "";
-  console.log("Fazendo update");
-  console.log("State.user.cards.hand", State.user.cards.hand);
-  console.log("Cards.search.result", Cards.search.result);
-  console.log("Cards.presentedCards", Cards.presentedCards);
+
   const showCards = Cards.search.result.length > 0 ? Cards.search.result : Cards.presentedCards;
   for (const card of showCards) {
-    let cardData= card;
+    let cardData = card;
     if (!card.name) {
       cardData = await PokeApi.getPokemon(card.id);
       cardData = PokeApi.getUsefulAttributes(cardData);
@@ -69,8 +66,8 @@ Cards.update = async  () => {
 
   Cards.area.hand.innerHTML = "";
   for (const card of State.user.cards.hand) {
-    let cardData= card;
-    if (!card.name) {
+    let cardData = card;
+    if (!card.name) {    
       cardData = await PokeApi.getPokemon(card.id);
       cardData = PokeApi.getUsefulAttributes(cardData);
       const foundInAllCards = State.user.cards.hand.find(poke => poke.id === cardData.id)
@@ -86,7 +83,7 @@ Cards.update = async  () => {
     cardDiv.addEventListener("dblclick", doubleClick);
     Cards.area.hand.appendChild(cardDiv);
   }
-}
+};
 
 function dragStart(e) {
   const card = e.target.closest(".card");
@@ -94,7 +91,7 @@ function dragStart(e) {
 
   e.dataTransfer.setData('text/plain', card.id);
   e.dataTransfer.effectAllowed = 'move';
-}
+};
 
 function doubleClick(e) {
   const card = e.target.closest(".card");
@@ -106,12 +103,12 @@ function doubleClick(e) {
   Cards.area.target = Cards.area.parent.classList.contains('cards_area') ? Cards.area.hand: Cards.area.presented;
   Cards.area.parent.removeChild(card);
   Cards.area.target.appendChild(card);
-}
+};
 
 function dragOver(e) {
   e.preventDefault();
   e.dataTransfer.dropEffect = 'move';
-}
+};
 
 function drop(e) {
   e.preventDefault();
@@ -128,7 +125,7 @@ function drop(e) {
   const card = document.getElementById(data);
   Cards.area.parent.removeChild(card);
   Cards.area.target.appendChild(card);
-}
+};
 
 function toggleCard(id) {
   id = Number(id);
@@ -146,7 +143,7 @@ function toggleCard(id) {
   };
 
   return false;
-}
+};
 
 function searchCard() {
   const searched = Cards.search.input.value;
@@ -155,4 +152,4 @@ function searchCard() {
   ) : [];
 
   Cards.update();
-}
+};

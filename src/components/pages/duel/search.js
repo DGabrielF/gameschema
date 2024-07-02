@@ -1,6 +1,7 @@
 import { State } from "../../../scripts/engine/state.js";
 import { Firestore } from "../../../scripts/services/firebase/firestore.js";
 import { UserValidation } from "../../../scripts/services/validation/user.js";
+import { Duel } from "./duel.js";
 import { NpcEnemy } from "./npc_enemy.js";
 import { OpenRoom } from "./open_room.js";
 
@@ -16,7 +17,6 @@ export const SearchDuel = {
   load: async () => {},
   toggleDuel: () => {},
   fetchDataSubsecion: async () => {},
-  attachEventAtEnemyButtons: () => {},
 };
 
 SearchDuel.load = () => {
@@ -28,6 +28,13 @@ SearchDuel.load = () => {
     SearchDuel.subSections.open_room = OpenRoom;
   };
   
+  const content = SearchDuel.self.querySelector(".search_duel_content");
+  content.addEventListener("click", event => {
+    const dueller = event.target.closest(".dueller");
+    if (!dueller) return;
+    if (!UserValidation.unauthenticated(State.user.uid)) return;
+    enterRoom(event);
+  });
 }
 
 SearchDuel.subsectionDataUpdate = async (subsectionObject) => {
@@ -46,20 +53,22 @@ SearchDuel.fetchDataSubsecion = async (classItem) => {
   if (!SearchDuel.subSections[classItem].data) {
     SearchDuel.subSections[classItem].data = data;
   }
-  if (SearchDuel.subSections[classItem].lastDoc) {
-    SearchDuel.subSections[classItem].lastDoc = lastDoc;
-  }
+  SearchDuel.subSections[classItem].lastDoc = lastDoc;
 
   await SearchDuel.subSections[SearchDuel.selectedSubSection].load();
-  SearchDuel.attachEventAtEnemyButtons();
 }
 
-SearchDuel.attachEventAtEnemyButtons = () => {
-  const enemyButtons = SearchDuel.self.querySelectorAll(".dueller button");
-  for (const enemyButton of enemyButtons) {
-    enemyButton.addEventListener("click", () => {
-      if (!UserValidation.unauthenticated(State.user.uid)) return;
-      enemyButton.parentNode.classList.add("selected");
-    });
+function enterRoom(event) {
+  const duelId = event.target.closest(".dueller").id;
+  
+  const type = event.target.closest(".search_duel_type").classList[0];
+
+  const foundRoom = SearchDuel.subSections[type].data.find(room => room.id === duelId);
+
+  if (foundRoom.private) {
+    console.log("digite a senha para entrar nessa sala")
+    return
   }
+
+  Duel.load(type, foundRoom);
 }

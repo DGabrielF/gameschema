@@ -51,9 +51,9 @@ Buy.list = async () => {
       if (foundElement) return;
 
       const ownerData = await Firestore.fetchDocById("Users", offer.owner);
-      const div = document.createElement("div");
-      div.classList.add("offer");
-      div.id = offer.id;
+      const li = document.createElement("li");
+      li.classList.add("offer");
+      li.id = offer.id;
 
       const date = new Date(offer.date);
       const day = ("0" + date.getUTCDate()).slice(-2);
@@ -66,12 +66,12 @@ Buy.list = async () => {
       <span class="card_name">${offer.card}</span>
       <span class="date">${formattedDate}</span>
       <button>
-      <img src="./src/assets/icons/general/money-offer.svg" alt="" class="icon">
-      <span class="price">${offer.price}</span>
+        <img src="./src/assets/icons/general/money-offer.svg" alt="" class="icon">
+        <span class="price">${offer.price}</span>
       </button>
       `
-      div.innerHTML = offetContent;
-      offerList.appendChild(div);
+      li.innerHTML = offetContent;
+      offerList.appendChild(li);
     }
   }
 };

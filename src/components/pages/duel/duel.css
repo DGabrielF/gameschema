@@ -1,0 +1,75 @@
+#duel_page {
+  padding: 5px 0;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+
+  background-color: pink;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+
+  position: absolute;
+  z-index: 20;
+}
+
+#duel_page.hide {
+  display: none;
+}
+
+#duel_page .opponent_cards {
+  width: 98vw;
+  min-height: 22.5vw;
+  height: 22.5vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#duel_page .duel_area {
+  padding: 5px 0;
+  width: 98vw;
+
+  height: 22.5vw;
+
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+#duel_page .select_attribute {
+  padding: 4px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(0, -100%);
+}
+
+#duel_page .duel_page_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#duel_page .player_cards {
+  width: 98vw;
+  min-height: 22.5vw;
+  height: 22.5vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}

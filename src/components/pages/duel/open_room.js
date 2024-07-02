@@ -26,6 +26,8 @@ OpenRoom.load = async () => {
 
   const confirmButton = OpenRoom.self.querySelector("button.confirm");
   confirmButton.addEventListener("click", createRoom);
+
+  Toast.open("Alerta", "Lembre-se de editar as cartas que usará antes de criar a sala!", Toast.error)
 }
 
 function togglePrivateRoom() {
@@ -53,10 +55,28 @@ async function createRoom() {
   }
 
   const data = {
-    uid: State.user.uid,
     name: name,
+    owner: {
+      uid: State.user.uid,
+      name: State.user.name,
+      cards: {
+        selected: null,
+        disabled: [],
+        hand: State.user.cards.hand
+      }
+    },
+    challenger: {
+      uid: null,
+      name: null,
+      cards: {
+        selected: null,
+        disabled: [],
+        hand: []
+      }
+    },
     private: OpenRoom.privateRoom,
     password: password,
+    challengerName: null,
     status: "open"
   }
   const response = await Firestore.createData("rooms", data);
